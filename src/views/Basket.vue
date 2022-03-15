@@ -1,7 +1,9 @@
 <template>
-  <div class="home-page">
+  <div class="basket-page">
+
     <Header/>
-    home page
+
+    basket page
   </div>
 </template>
 

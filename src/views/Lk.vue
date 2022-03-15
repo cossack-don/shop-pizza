@@ -1,7 +1,9 @@
 <template>
-  <div class="home-page">
+  <div class="lk">
+
     <Header/>
-    home page
+
+    LK page
   </div>
 </template>
 

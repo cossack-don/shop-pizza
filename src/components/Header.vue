@@ -1,16 +1,18 @@
 <template>
   <div class="wrapper-header">
     <header class="header">
-      <h1 class="header__title">App shop-pizza</h1>
+      <router-link to="/" class="header__link">
+        <h1 class="header__title">App shop-pizza</h1>
+      </router-link>
 
-      <router-link to="/" class="header__basket basket">
+      <router-link to="/basket" class="header__basket basket">
         <div class="basket__counter">2</div>
         <img class="basket__basket-icon" src="@/assets/basket-icon.svg" alt="">
       </router-link>
 
       <div class="price">1 333 Руб.</div>
 
-      <router-link to="/" class="link-lk">
+      <router-link to="/lk" class="link-lk">
         <img class="link-lk__lk-icon" src="@/assets/lk-icon.svg" alt="">
       </router-link>
     </header>
@@ -25,7 +27,8 @@ export default {
   name: 'Header',
   components: {
 
-  }
+  },
+
 }
 </script>
 <style lang="scss">
@@ -41,10 +44,18 @@ export default {
   display: flex;
   padding: 10px;
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__title {
     font-size: 20px;
     font-weight: bold;
     color: #ffffff;
+    &:hover {
+      transition: 0.5s;
+      color: yellow;
+    }
   }
 
 }

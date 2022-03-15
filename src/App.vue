@@ -1,31 +1,24 @@
 <template>
-  <div id="nav">
-    vue v.3
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="wrapper-app">
+    <router-view/>
   </div>
-  <router-view/>
+
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
 }
 
-#nav {
-  padding: 30px;
+#wrapper-app {
+  font-family: Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #000000;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  background: red;
 }
 </style>

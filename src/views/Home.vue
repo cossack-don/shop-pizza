@@ -1,20 +1,29 @@
 <template>
-  <div class="home-page">
-    <Header/>
-    home page
+  <div class="home-page main-content-app">
+    <h1 class="home-page__title">Конструктор пиццы</h1>
   </div>
 </template>
 
 
 
 <script>
-// @ is an alias to /src
-import Header from '@/components/Header.vue'
+
+
 
 export default {
   name: 'Home',
   components: {
-    Header
+
   }
 }
 </script>
+
+<style lang="scss">
+.home-page {
+
+  &__title {
+    font-weight: bold;
+  }
+}
+
+</style>

@@ -2,16 +2,19 @@
   <div class="home-page main-content-app">
     <h1 class="home-page__title">Конструктор пиццы</h1>
 
-<section class="wrapper-pick-dough">
-  <div class="wrapper-pick-dough__left">
-    <PickDough/>
-    <ChooseIngredients/>
-  </div>
-  <div class="wrapper-pick-dough__right">
-    <ChooseSize/>
-    <TypeOfPizza/>
-  </div>
-</section>
+    <section class="wrapper-pick-dough">
+
+      <div class="wrapper-pick-dough__left">
+        <PickDough/>
+        <ChooseIngredients/>
+      </div>
+
+      <div class="wrapper-pick-dough__right">
+        <ChooseSize/>
+        <TypeOfPizza/>
+      </div>
+
+    </section>
 
   </div>
 </template>
@@ -40,6 +43,7 @@ export default {
 
   &__title {
     font-weight: bold;
+    margin-bottom: 10px;
   }
 }
 
@@ -48,12 +52,12 @@ display: flex;
   justify-content: space-between;
 
   &__left {
-    background:red;
+    //background:red;
     width: 60%;
   }
 
   &__right {
-    background:yellow;
+    //background:yellow;
     width: 38%;
   }
 }

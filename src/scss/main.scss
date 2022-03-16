@@ -1,6 +1,10 @@
 @import './app-core/global-style.scss';
-@import './app-core/_vars.scss';
+@import 'app-core/vars';
 
 //пример как подключить глобально стили в проект   for Vue-v2
+//https://cli.vuejs.org/ru/guide/css.html#css-%D0%BC%D0%BE%D0%B4%D1%83n%D0%B8
 //https://webdevblog.ru/kak-importirovat-sass-fajl-v-kazhdyj-komponent-vue-prilozheniya/
 //https://webformyself.com/importirovat-fajl-sass-v-komponent-vue/
+
+//https://austingil.com/global-sass-vue-project/
+//ТУТ ГОВОРИТСЯ ОБ ОШИБКЕ

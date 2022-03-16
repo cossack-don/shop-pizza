@@ -2,7 +2,7 @@
 //     css: {
 //         loaderOptions: {
 //             sass: {
-//                 data: `@import "@/scss/app-core/_vars.scss";`
+//                 data: `@import "@/scss/_vars.scss";`
 //             }
 //         }
 //     }

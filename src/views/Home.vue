@@ -1,6 +1,8 @@
 <template>
   <div class="home-page main-content-app">
     <h1 class="home-page__title">Конструктор пиццы</h1>
+
+
   </div>
 </template>
 

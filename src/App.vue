@@ -25,8 +25,7 @@ export default {
 
 
 <style lang="scss">
-
-//@import '@/scss/app-core/_vars.scss';
+@import '@/scss/app-core/_vars.scss';
 
 * {
   box-sizing: border-box;
@@ -39,7 +38,7 @@ export default {
   font-family: Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color:#000000;
+  color:$core-color-text;
 }
 
 

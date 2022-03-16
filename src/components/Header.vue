@@ -33,9 +33,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/scss/app-core/_vars.scss';
+
 //Обертка шапки
 .wrapper-header {
-  background: #41B619FF;
+  background: $core-color-green;
 }
 //Шапка
 .header {
@@ -77,7 +79,7 @@ export default {
 // общая цена покупок
 .price {
   font-weight: bold;
-  color: #ffffff;
+  color: $core-color-white;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -92,13 +94,14 @@ export default {
   }
 
   &__counter {
+    font-size: 14px;
     position: absolute;
-    background: yellow;
+    background: $core-color-yellow;
     border-radius: 50%;
     width: 20px;
     height: 20px;
     right: 0;
-    color: #000000;
+    color:$core-color-text;
     font-weight: bold;
     display: flex;
     justify-content: center;

@@ -1,7 +1,10 @@
 <!--Выбрать ингридиент - компонент-->
 <template>
-  <div class="home-page main-content-app">
-   выбрать ингридиент
+  <div class="main-style-for-block main-content-app ingredients">
+
+    <h4 class="main-style-title">Выберете ингридиенты</h4>
+
+    <div class="global-gray-line"></div>
   </div>
 </template>
 
@@ -18,3 +21,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.ingredients {
+  margin-top: 20px !important;
+}
+
+</style>

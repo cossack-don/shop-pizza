@@ -14,7 +14,7 @@
         <input id="sizePizza23" type="radio" name="radio" v-model="pickedSizePizza" value="23">
 
         <label for="sizePizza23">
-          <img class="dough__image" :class="addClassPickSize23" src="@/assets/testo-light.png" alt="">
+          <img class="dough__image" :class="addClassPickSize23" src="@/assets/small-pizza-pick.jpg" alt="">
           <span style="margin: auto;">23 см</span>
         </label>
       </div>
@@ -23,7 +23,7 @@
         <input id="sizePizza32" type="radio" name="radio" v-model="pickedSizePizza" value="32">
 
         <label for="sizePizza32">
-          <img class="dough__image" :class="addClassPickSize32" src="@/assets/testo-light.png" alt="">
+          <img class="dough__image" :class="addClassPickSize32" src="@/assets/medium-pizza-pick.jpg" alt="">
           <span style="margin: auto;">32 см</span>
         </label>
       </div>
@@ -32,7 +32,7 @@
         <input id="sizePizza45" type="radio" name="radio" v-model="pickedSizePizza" value="45">
 
         <label for="sizePizza45">
-          <img class="dough__image" :class="addClassPickSize45"  src="@/assets/testo-light.png" alt="">
+          <img class="dough__image" :class="addClassPickSize45"  src="@/assets/big-pizza-pick.jpg" alt="">
           <span style="margin: auto;">45 см</span>
         </label>
       </div>

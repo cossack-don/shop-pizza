@@ -49,6 +49,11 @@ export default {
     font-size: 20px;
     border-radius: 10px;
     border: solid 2px $core-color-green;
+
+    &:focus {
+      border: solid 2px #62d939;
+
+    }
   }
   &__image-pizza {
 
@@ -76,7 +81,7 @@ export default {
 
     &:hover {
       transition: 0.5s;
-      color:$core-color-yellow ;
+      color:$core-color-yellow;
       background: #62d939;
     }
   }

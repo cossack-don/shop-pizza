@@ -1,10 +1,13 @@
 <!--внешний вид пиццы-->
 
 <template>
-  <div class="main-content-app type-of-pizza">
+  <div class="type-of-pizza">
 <!--  стилизовать свой селект  -->
-    <select name="" id=""></select>
+
+    <input type="text" v-model.trim="namePizza" placeholder="Название вашей пиццы" class="type-of-pizza__name-pizza">
     <br>
+
+
 
     картинка пиццы
     <img class="type-of-pizza__image-pizza" src="" alt="">
@@ -26,6 +29,12 @@
 export default {
   components: {
 
+  },
+  data(){
+    return {
+      namePizza:'',
+
+    }
   }
 }
 </script>
@@ -34,7 +43,16 @@ export default {
 @import '@/scss/app-core/_vars.scss';
 
 .type-of-pizza {
+  margin-top: 19px;
 
+  &__name-pizza {
+    width: 100%;
+    padding: 10px 20px;
+    color: $core-color-text;
+    font-size: 20px;
+    border-radius: 10px;
+    border: solid 2px $core-color-green;
+  }
   &__image-pizza {
 
   }

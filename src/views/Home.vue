@@ -42,8 +42,10 @@ export default {
 .home-page {
 
   &__title {
+    margin-top: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 40px;
+    margin-bottom: 20px;
   }
 }
 

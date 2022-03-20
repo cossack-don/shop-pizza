@@ -2,15 +2,12 @@
 
 <template>
   <div class="type-of-pizza">
-<!--  стилизовать свой селект  -->
+
 
     <input type="text" v-model.trim="namePizza" placeholder="Название вашей пиццы" class="type-of-pizza__name-pizza">
-    <br>
 
 
-
-    картинка пиццы
-    <img class="type-of-pizza__image-pizza" src="" alt="">
+    <img class="type-of-pizza__image-pizza main-style-image" src="@/assets/image-pizza.png" alt="">
     
     <div class="type-of-pizza__footer">
       <p class="type-of-pizza__price">Итого: 727 ₽</p>

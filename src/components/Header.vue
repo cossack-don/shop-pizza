@@ -11,7 +11,7 @@
         <img class="basket__basket-icon" src="@/assets/basket-icon.svg" alt="">
       </router-link>
 <!--Общая стоимость товаров-->
-      <div class="price">1 333 Руб.</div>
+      <div class="price">1 333 ₽</div>
 <!--иконка-ссылка в ЛК-->
       <router-link to="/lk" class="link-lk">
         <img class="link-lk__lk-icon" src="@/assets/lk-icon.svg" alt="">

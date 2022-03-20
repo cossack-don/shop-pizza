@@ -18,6 +18,8 @@
       <span>Основной соус: {{ pickedSauce }}</span>
       <br>
       <p>Начинка:</p>
+
+      <img :src="`${item.url}`" alt="" v-for="(item,index) in items" :key="index">
     </div>
   </div>
 </template>
@@ -34,7 +36,54 @@ export default {
   },
   data() {
     return {
-      pickedSauce :''
+      pickedSauce :'',
+      items:[
+        {
+          url:require('@/assets/ingredients/mushrooms.png')
+        },
+        {
+          url:require('@/assets/ingredients/cheddar.png')
+        },
+        {
+          url:require('@/assets/ingredients/salami.png')
+        },
+        {
+          url:require('@/assets/ingredients/ham.png')
+        },
+        {
+          url:require('@/assets/ingredients/pineapple.png')
+        },
+        {
+          url:require('@/assets/ingredients/bacon.png')
+        },
+        {
+          url:require('@/assets/ingredients/allium.png')
+        },
+        {
+          url:require('@/assets/ingredients/chile.png')
+        },
+        {
+          url:require('@/assets/ingredients/jalapeno.png')
+        },
+        {
+          url:require('@/assets/ingredients/olea.png')
+        },
+        {
+          url:require('@/assets/ingredients/tomato.png')
+        },
+        {
+          url:require('@/assets/ingredients/salmon.png')
+        },
+        {
+          url:require('@/assets/ingredients/mozzarella.png')
+        },
+        {
+          url:require('@/assets/ingredients/parmesa.png')
+        },
+        {
+          url:require('@/assets/ingredients/blue-cheese.png')
+        },
+      ]
     }
   }
 }

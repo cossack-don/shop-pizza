@@ -6,8 +6,16 @@
 
     <input type="text" v-model.trim="namePizza" placeholder="Название вашей пиццы" class="type-of-pizza__name-pizza">
 
+<div>
+  <div style="position: relative; height: 500px">
 
-    <img class="type-of-pizza__image-pizza main-style-image" src="@/assets/image-pizza.png" alt="">
+    <img class="type-of-pizza__image-pizza main-style-image" src="@/assets/image-pizza-null.png" alt="" style="position: absolute">
+    <img src="@/assets/bg-ingredients/all-tomato.png" alt="" style="position: absolute; z-index: 1;" class="type-of-pizza__image-pizza main-style-image">
+    <img src="@/assets/bg-ingredients/all-chile.png" alt="" style="position: absolute; z-index: 2;" class="type-of-pizza__image-pizza main-style-image">
+    <img src="@/assets/bg-ingredients/all-cheddar.png" alt="" style="position: absolute; z-index: 3;" class="type-of-pizza__image-pizza main-style-image">
+  </div>
+</div>
+
     
     <div class="type-of-pizza__footer">
       <p class="type-of-pizza__price">Итого: 727 ₽</p>

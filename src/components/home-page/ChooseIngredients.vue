@@ -9,7 +9,7 @@
 
     <div class="ingredients__body">
       <div class="ingredients-sauce">
-        <p class="ingredients-sauce__title">Основной соус:  </p>
+        <p class="ingredients-sauce__title">Основной соус: </p>
 
         <div class="ingredients-sauce-radio-btn">
 <!--          name="radio"-->
@@ -27,23 +27,36 @@
 
 
 
-
-      <p>Начинка:</p>
-
-      <img :src="`${item.url}`" alt="" v-for="(item,index) in items" :key="index">
-
-     <div v-for="(item,index) in arrayIngredientsForCounter" :key="index">
-       <img :src="`${item.urlImage}`" alt="">
-       {{item.name}} {{item.t}}
-       <button class="ingredients-counter-minus ingredients-counter"
+<div class="ingredients-stuffing">
+  <p class="ingredients-stuffing__title">Начинка:</p>
 
 
-               @click="counterMinus(item.counter, index)">-</button>
-       {{item.counter}}
-       <button class="ingredients-counter-plus ingredients-counter"
-               :class="{t:ac}"
-               @click="counterPlus(item.counter, index)">+</button>
-     </div>
+</div>
+
+
+<!--      <img :src="`${item.url}`" alt="" v-for="(item,index) in items" :key="index">-->
+<div class="ingredients-stuffing-items">
+  <div v-for="(item,index) in arrayIngredientsForCounter" :key="index" class="ingredients-stuffing-items__wrapper">
+
+    <div class="ingredients-stuffing-item">
+      <img :src="`${item.urlImage}`" alt="" class="ingredients-stuffing-item__image">
+      <p class="ingredients-stuffing-item__title">{{item.name}}</p>
+    </div>
+
+    <div class="ingredients-stuffing-counters">
+      <button class="ingredients-counter-minus ingredients-counter"
+              @click="counterMinus(item.counter, index)">-</button>
+
+      <span class="ingredients-counter__text">{{item.counter}}</span>
+
+      <button class="ingredients-counter-plus ingredients-counter"
+              :class="{t:ac}"
+              @click="counterPlus(item.counter, index)">+</button>
+    </div>
+
+  </div>
+</div>
+
 
     <button>сброс</button>
     </div>
@@ -72,35 +85,42 @@ export default {
         {
           id:1,
           name:'Грибы',
-          counter:2,
+          counter:0,
           urlImage:require('@/assets/ingredients/mushrooms.png'),
           t:false
         },
         {
           id:2,
           name:'Чеддер',
-          counter:4,
-          urlImage:require('@/assets/ingredients/mushrooms.png'),
+          counter:0,
+          urlImage:require('@/assets/ingredients/cheddar.png'),
           t:true
         },
         {
           id:3,
-          name:'Чеддер',
-          counter:4,
-          urlImage:require('@/assets/ingredients/mushrooms.png'),
+          name:'Салями',
+          counter:0,
+          urlImage:require('@/assets/ingredients/salami.png'),
+          t:true
+        },
+        {
+          id:4,
+          name:'Ветчина',
+          counter:0,
+          urlImage:require('@/assets/ingredients/ham.png'),
+          t:true
+        },
+        {
+          id:4,
+          name:'Ветчина',
+          counter:0,
+          urlImage:require('@/assets/ingredients/ham.png'),
           t:true
         }
       ],
       items:[
-        {
-          url:require('@/assets/ingredients/mushrooms.png')
-        },
-        {
-          url:require('@/assets/ingredients/cheddar.png')
-        },
-        {
-          url:require('@/assets/ingredients/salami.png')
-        },
+
+
         {
           url:require('@/assets/ingredients/ham.png')
         },
@@ -163,38 +183,6 @@ export default {
 </script>
 
 <style lang="scss">
-.ingredients-sauce-radio-btn {
-
-  input[type=radio] {
-    display: none;
-  }
-}
-
-.ingredients-sauce-radio-btn label {
-  display: inline-block;
-  cursor: pointer;
-  position: relative;
-  padding-left: 25px;
-  margin-right: 0;
-  line-height: 18px;
-  user-select: none;
-}
-.ingredients-sauce-radio-btn label:before {
-  content: "";
-  display: inline-block;
-  width: 17px;
-  height: 18px;
-  position: absolute;
-  left: 0;
-  bottom: 1px;
-  border: solid 2px #cac6cd;
-  border-radius: 50%;
-}
-
-/* Checked */
-.ingredients-sauce-radio-btn input[type=radio]:checked + label:before {
-  background: #41B619FF;
-}
 
 
 
@@ -206,6 +194,14 @@ export default {
     margin-bottom: 15px;
   }
 
+}
+.ingredients-counter {
+  &__text {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }
 //color:#FF6B00FF;  orange
 .ingredients-counter-minus
@@ -246,6 +242,7 @@ export default {
 .ingredients-sauce {
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 
   &__title {
     font-size: 18px;
@@ -261,5 +258,73 @@ export default {
       cursor: pointer;
     }
   }
+}
+.ingredients-sauce-radio-btn {
+
+  label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 0;
+    line-height: 18px;
+    user-select: none;
+  }
+  label:before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    border: solid 2px #cac6cd;
+    border-radius: 50%;
+  }
+  input[type=radio] {
+    display: none;
+  }
+
+  input[type=radio]:checked + label:before {
+    background: #41B619FF;
+  }
+}
+
+.ingredients-stuffing{
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+
+}
+.ingredients-stuffing-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+
+  &__wrapper {
+    margin-bottom: 45px;
+    margin-right: 48px;
+  }
+}
+.ingredients-stuffing-item {
+  display: flex;
+  align-items: center;
+  &__image {
+    margin-right: 15px;
+    width: 35px;
+    height: auto;
+  }
+  &__title {
+    font-size: 18px;
+  }
+}
+.ingredients-stuffing-counters {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 10px;
 }
 </style>

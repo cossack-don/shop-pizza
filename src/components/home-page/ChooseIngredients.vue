@@ -4,19 +4,30 @@
 
     <h4 class="main-style-title">Выберете ингридиенты</h4>
 
-    <div class="global-gray-line">
+    <div class="global-gray-line"></div>
 
-    </div>
 
     <div class="ingredients__body">
-      <input type="radio" id="pickedSauceOne" value="Томатный" v-model="pickedSauce">
-      <label for="pickedSauceOne">Томатный</label>
-      <br>
-      <input type="radio" id="pickedSauceTwo" value="Сливочный" v-model="pickedSauce">
-      <label for="pickedSauceTwo">Сливочный</label>
-      <br>
-      <span>Основной соус: {{ pickedSauce }}</span>
-      <br>
+      <div class="ingredients-sauce">
+        <p class="ingredients-sauce__title">Основной соус:  </p>
+
+        <div class="ingredients-sauce-radio-btn">
+<!--          name="radio"-->
+          <input type="radio" id="pickedSauceOne" value="Томатный" v-model="pickedSauce">
+          <label class="ingredients-sauce-radio-btn__label" for="pickedSauceOne">Томатный</label>
+        </div>
+
+        <div class="ingredients-sauce-radio-btn">
+<!--          name="radio"-->
+          <input type="radio" id="pickedSauceTwo" value="Сливочный" v-model="pickedSauce">
+          <label class="ingredients-sauce-radio-btn__label" for="pickedSauceTwo">Сливочный</label>
+        </div>
+
+      </div>
+
+
+
+
       <p>Начинка:</p>
 
       <img :src="`${item.url}`" alt="" v-for="(item,index) in items" :key="index">
@@ -36,6 +47,10 @@
 
     <button>сброс</button>
     </div>
+
+
+
+
   </div>
 </template>
 
@@ -51,7 +66,7 @@ export default {
   },
   data() {
     return {
-      pickedSauce :'',
+      pickedSauce :'Томатный',
       ac:false,
       arrayIngredientsForCounter:[
         {
@@ -136,7 +151,7 @@ export default {
     },
 
     counterPlus(counterPlus, index) {
-      const maxNumberIngredient = 999;
+      const maxNumberIngredient = 3;
 
       if(maxNumberIngredient >counterPlus) {
         this.arrayIngredientsForCounter[index].counter++
@@ -148,6 +163,40 @@ export default {
 </script>
 
 <style lang="scss">
+.ingredients-sauce-radio-btn {
+
+  input[type=radio] {
+    display: none;
+  }
+}
+
+.ingredients-sauce-radio-btn label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px;
+  margin-right: 0;
+  line-height: 18px;
+  user-select: none;
+}
+.ingredients-sauce-radio-btn label:before {
+  content: "";
+  display: inline-block;
+  width: 17px;
+  height: 18px;
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  border: solid 2px #cac6cd;
+  border-radius: 50%;
+}
+
+/* Checked */
+.ingredients-sauce-radio-btn input[type=radio]:checked + label:before {
+  background: #41B619FF;
+}
+
+
 
 .ingredients {
   margin-top: 20px !important;
@@ -192,6 +241,25 @@ export default {
 
   &:hover {
     cursor: pointer;
+  }
+}
+.ingredients-sauce {
+  display: flex;
+  align-items: center;
+
+  &__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 15px;
+  }
+}
+.ingredients-sauce-radio-btn {
+  margin-right: 15px;
+
+  &__label {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 </style>

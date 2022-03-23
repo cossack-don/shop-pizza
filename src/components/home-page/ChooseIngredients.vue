@@ -45,19 +45,20 @@
 
     <div class="ingredients-stuffing-counters">
       <button class="ingredients-counter-minus ingredients-counter"
+
               @click="counterMinus(item.counter, index)">-</button>
 
       <span class="ingredients-counter__text">{{item.counter}}</span>
 
       <button class="ingredients-counter-plus ingredients-counter"
-              :class="{t:ac}"
+              ref="counterColor"
               @click="counterPlus(item.counter, index)">+</button>
     </div>
 
   </div>
 </div>
 
-
+<!--{{$store.state.ingredients}}-->
     <button>сброс</button>
     </div>
 
@@ -79,36 +80,34 @@ export default {
   },
   data() {
     return {
+      isActive:false,
       pickedSauce :'Томатный',
-      ac:false,
+
       arrayIngredientsForCounter:[
         {
           id:1,
           name:'Грибы',
           counter:0,
           urlImage:require('@/assets/ingredients/mushrooms.png'),
-          t:false
+          showImage:false
         },
         {
           id:2,
           name:'Чеддер',
           counter:0,
           urlImage:require('@/assets/ingredients/cheddar.png'),
-          t:true
         },
         {
           id:3,
           name:'Салями',
           counter:0,
           urlImage:require('@/assets/ingredients/salami.png'),
-          t:true
         },
         {
           id:4,
           name:'Ветчина',
           counter:0,
           urlImage:require('@/assets/ingredients/ham.png'),
-          t:true
         },
         {
           id:5,
@@ -181,9 +180,7 @@ export default {
           urlImage:require('@/assets/ingredients/blue-cheese.png')
         },
       ],
-      items:[
 
-      ]
     }
   },
   methods:{
@@ -191,7 +188,12 @@ export default {
       const minNumberIngredient = 0;
 
       if(minNumberIngredient < counterMinus) {
-        this.arrayIngredientsForCounter[index].counter--
+        this.arrayIngredientsForCounter[index].counter--;
+
+        //если счетчик ингредиента больше 1, делаем кнопку другого цвета
+        if(this.arrayIngredientsForCounter[index].counter < 1) {
+          this.$refs.counterColor[index].classList.remove("active-orange-btn-plus");
+        }
       }
 
     },
@@ -200,7 +202,16 @@ export default {
       const maxNumberIngredient = 3;
 
       if(maxNumberIngredient >counterPlus) {
-        this.arrayIngredientsForCounter[index].counter++
+
+        this.arrayIngredientsForCounter[index].counter++;
+
+        //если счетчик ингредиента больше 1, делаем кнопку другого цвета
+        if(this.arrayIngredientsForCounter[index].counter >= 1) {
+          this.$refs.counterColor[index].classList.add("active-orange-btn-plus");
+        }
+
+
+
       }
 
     }
@@ -209,9 +220,6 @@ export default {
 </script>
 
 <style lang="scss">
-
-
-
 .ingredients {
   margin-top: 20px !important;
 
@@ -336,7 +344,7 @@ export default {
     width: 25%;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: flex-start;
   }
 }
 .ingredients-stuffing-item {
@@ -356,5 +364,9 @@ export default {
   justify-content: end;
   align-items: center;
   margin-top: 10px;
+}
+
+.active-orange-btn-plus {
+  background: #FF6B00FF;
 }
 </style>

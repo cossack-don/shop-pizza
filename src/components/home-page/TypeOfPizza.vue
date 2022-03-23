@@ -10,10 +10,10 @@
   <div style="position: relative; height: 500px">
 
     <img class="type-of-pizza__image-pizza main-style-image" src="@/assets/image-pizza-null.png" alt="" style="position: absolute">
-    <img src="@/assets/bg-ingredients/all-tomato.png" alt="" style="position: absolute; z-index: 1;" class="type-of-pizza__image-pizza main-style-image">
-    <img src="@/assets/bg-ingredients/all-chile.png" alt="" style="position: absolute; z-index: 2;" class="type-of-pizza__image-pizza main-style-image">
-    <img src="@/assets/bg-ingredients/all-cheddar.png" alt="" style="position: absolute; z-index: 3;" class="type-of-pizza__image-pizza main-style-image">
-    <img src="@/assets/bg-ingredients/all-olea.png" alt="" style="position: absolute; z-index: 3;" class="type-of-pizza__image-pizza main-style-image">
+    <img src="@/assets/bg-ingredients/all-tomato.png" alt="" style="position: absolute; z-index: 1; display: none" class="type-of-pizza__image-pizza main-style-image">
+<!--    <img src="@/assets/bg-ingredients/all-chile.png" alt="" style="position: absolute; z-index: 2;" class="type-of-pizza__image-pizza main-style-image">-->
+<!--    <img src="@/assets/bg-ingredients/all-cheddar.png" alt="" style="position: absolute; z-index: 3;" class="type-of-pizza__image-pizza main-style-image">-->
+<!--    <img src="@/assets/bg-ingredients/all-olea.png" alt="" style="position: absolute; z-index: 3;" class="type-of-pizza__image-pizza main-style-image">-->
   </div>
 </div>
 

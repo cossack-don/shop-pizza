@@ -59,7 +59,7 @@
 </div>
 
 <!--{{$store.state.ingredients}}-->
-    <button @click="resetAllParamsPizza">сброс</button>
+    <button class="ingredients__btn-reset" @click="resetAllParamsPizza">Очистить</button>
     </div>
 
 
@@ -250,9 +250,31 @@ export default {
 </script>
 
 <style lang="scss">
+@import '@/scss/app-core/_vars.scss';
+
 .ingredients {
   margin-top: 20px !important;
 
+  &__btn-reset {
+    color: #ffffff;
+    background: #FF6B00FF;
+    font-weight: bold;
+    display: block;
+    padding: 20px 60px;
+    font-size: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      transition: 0.5s;
+      color:$core-color-yellow;
+      background: #ff8f3e;
+    }
+  }
   &__body {
     margin-top: 15px;
     margin-bottom: 15px;

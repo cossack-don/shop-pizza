@@ -193,6 +193,12 @@ export default {
         //если счетчик ингредиента больше 1, делаем кнопку другого цвета
         if(this.arrayIngredientsForCounter[index].counter < 1) {
           this.$refs.counterColor[index].classList.remove("active-orange-btn-plus");
+
+          //пробовал через refs ,но писал ref в другом компоненте и пытался обратиться тут, выдает undef
+          //решил сделать через querySelectorAll
+          //получаю массив с картинками ингредиентов и добавляю класс если счетчик меньше  1
+          const arrayImagesForIngredients = document.querySelectorAll('.ingredient-image');
+          arrayImagesForIngredients[index].classList.remove("show-ingredient-image");
         }
       }
 
@@ -205,9 +211,15 @@ export default {
 
         this.arrayIngredientsForCounter[index].counter++;
 
-        //если счетчик ингредиента больше 1, делаем кнопку другого цвета
+        //если счетчик ингредиента больше 1, делаем кнопку другого цвета .classList.add("show-ingredient-image");
         if(this.arrayIngredientsForCounter[index].counter >= 1) {
           this.$refs.counterColor[index].classList.add("active-orange-btn-plus");
+
+          //пробовал через refs ,но писал ref в другом компоненте и пытался обратиться тут, выдает undef
+          //решил сделать через querySelectorAll
+          //получаю массив с картинками ингредиентов и добавляю класс если счетчик равен или больше 1
+          const arrayImagesForIngredients = document.querySelectorAll('.ingredient-image');
+          arrayImagesForIngredients[index].classList.add("show-ingredient-image")
         }
 
 

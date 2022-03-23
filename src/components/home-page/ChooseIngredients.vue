@@ -59,7 +59,7 @@
 </div>
 
 <!--{{$store.state.ingredients}}-->
-    <button>сброс</button>
+    <button @click="resetAllParamsPizza">сброс</button>
     </div>
 
 
@@ -226,8 +226,26 @@ export default {
 
       }
 
+    },
+
+    resetAllParamsPizza() {
+      //пробовал через refs ,но писал ref в другом компоненте и пытался обратиться тут, выдает undef
+      //решил сделать через querySelectorAll
+      //получаю массив с картинками ингредиентов
+      const arrayImagesForIngredients = document.querySelectorAll('.ingredient-image');
+
+      this.arrayIngredientsForCounter.forEach((item,index) => {
+        //очикаю все кнопки от оранжевого цвета
+        this.$refs.counterColor[index].classList.remove("active-orange-btn-plus");
+        //очищаю пиццу от картинок ингредиентов
+        arrayImagesForIngredients[index].classList.remove("show-ingredient-image")
+        //очищаю счетчики у всех ингредиентов
+        item.counter = 0
+
+      })
     }
-  }
+  },
+
 }
 </script>
 

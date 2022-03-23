@@ -1,5 +1,5 @@
 <template>
-  <div class="home-page main-content-app">
+  <div class="main-content-app home-page ">
     <h1 class="home-page__title">Конструктор пиццы</h1>
 
     <section class="wrapper-pick-dough">
@@ -40,6 +40,7 @@ export default {
 
 <style lang="scss">
 .home-page {
+  margin-bottom: 35px !important;
 
   &__title {
     margin-top: 20px;

@@ -122,7 +122,9 @@ export default {
   //картинки для наложения на пиццу
   &__wrapper-images {
     position: relative;
-    height: 500px
+    height: 588px;
+    display: flex;
+    align-items: center;
   }
   &__image-pizza--pizza-null {
     position: absolute;

@@ -1,5 +1,7 @@
 import { createStore } from 'vuex'
-import constructorPizza from './constructor-pizza.js';
+
+import constructorPizza from './constructor-pizza';
+import basket from './basket';
 
 export default createStore({
   state: {
@@ -110,6 +112,7 @@ export default createStore({
   modules: {
       // обращаться к стору-модулю
       //$store.state.constructorPizza
-      constructorPizza
+      constructorPizza,
+      basket
   }
 })

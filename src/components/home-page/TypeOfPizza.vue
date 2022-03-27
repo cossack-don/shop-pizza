@@ -77,7 +77,7 @@
   </div>
 </div>
 
-    
+
     <div class="type-of-pizza__footer">
       <p class="type-of-pizza__price">Итого: 727 ₽</p>
       <router-link class="type-of-pizza__btn" to="/basket">Готовьте!</router-link>
@@ -101,7 +101,7 @@ export default {
       namePizza:'',
 
     }
-  }
+  },
 }
 </script>
 

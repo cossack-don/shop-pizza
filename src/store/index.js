@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import constructorPizza from './constructor-pizza.js';
 
 export default createStore({
   state: {
@@ -107,5 +108,8 @@ export default createStore({
   actions: {
   },
   modules: {
+      // обращаться к стору-модулю
+      //$store.state.constructorPizza
+      constructorPizza
   }
 })

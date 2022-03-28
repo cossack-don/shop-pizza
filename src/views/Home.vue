@@ -5,7 +5,8 @@
     <section class="wrapper-pick-dough">
 
       <div class="wrapper-pick-dough__left">
-        <PickDough/>
+        <PickDough @test='test'/>
+        ПРИМЕР: {{tests}}
         <ChooseIngredients/>
       </div>
 
@@ -34,6 +35,20 @@ export default {
     ChooseSize,
     ChooseIngredients,
     TypeOfPizza
+  },
+  computed:{
+
+  },
+  methods:{
+    test(data) {
+      this.tests = data
+      console.log( this.tests )
+    }
+  },
+  data() {
+    return {
+      tests:'light'
+    }
   }
 }
 </script>

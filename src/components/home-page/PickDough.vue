@@ -9,7 +9,7 @@
     <div class="pick-dough__body dough">
 
       <div class="dough__thin dough-radio-btn">
-        <input id="radio-dough-one" type="radio" name="radio" value="light" v-model="picked" :value="picked" @input="v">
+        <input id="radio-dough-one" type="radio" name="radio" value="light" v-model.trim="picked" :value="picked" @input="valueRadioBtn">
 
         <label for="radio-dough-one" >
           <img class="dough__image" :class="addClassPickLightDough" src="@/assets/testo-light.png" alt="">
@@ -22,7 +22,7 @@
       </div>
 
       <div class="dough__bold dough-radio-btn">
-        <input id="radio-dough-two" type="radio" name="radio" value="bold" v-model="picked" :value="picked" @input="v">
+        <input id="radio-dough-two" type="radio" name="radio" value="bold" v-model.trim="picked" :value="picked" @input="valueRadioBtn">
 
         <label for="radio-dough-two" >
           <img class="dough__image" :class="addClassPickBoldDough" src="@/assets/testo-bold.png"  alt="">
@@ -49,10 +49,9 @@ export default {
   },
 
   methods:{
-    v(e) {
-      let value = e.target.value;
-      // console.log(value)
-      this.$emit('test',value)
+    valueRadioBtn(e) {
+      const value = e.target.value;
+      this.$emit('childComponentPickDoughValueRadioBtn',value)
     }
   },
   computed:{

@@ -2,19 +2,22 @@
   <div class="main-content-app home-page ">
     <h1 class="home-page__title">Конструктор пиццы</h1>
 
+    Основная задача:
+    получить из дочерних компонентов данные и занести их в переменные на странице home
+    чтобы потом их перенести в store
     <section class="wrapper-pick-dough">
 
       <div class="wrapper-pick-dough__left">
-        <PickDough @test='test'/>
-        ПРИМЕР: {{tests}}
+        <PickDough @childComponentPickDoughValueRadioBtn='snarfHandlerPickDoughValueRadioBtn'/>
+        ПРИМЕР: {{dough}}
         <ChooseIngredients/>
       </div>
 
       <div class="wrapper-pick-dough__right">
         <ChooseSize/>
-        <TypeOfPizza/>
+        <TypeOfPizza @childComponentTypeOfPizzaValueNamePizza='snarfHandlerTypeOfPizzaValueNamePizza' />
       </div>
-
+      пример: {{namePizza}}
     </section>
 
   </div>
@@ -40,14 +43,23 @@ export default {
 
   },
   methods:{
-    test(data) {
-      this.tests = data
-      console.log( this.tests )
+    snarfHandlerPickDoughValueRadioBtn(dataValueRadioBtn) {
+      //перехватываем событие из дочернего компонента и кладем в свою переменную
+      this.dough = dataValueRadioBtn
+      // console.log( this.dough )
+    },
+    snarfHandlerTypeOfPizzaValueNamePizza(dataValueNamePizza) {
+      //перехватываем событие из дочернего компонента и кладем в свою переменную
+    this.namePizza = dataValueNamePizza
     }
   },
   data() {
     return {
-      tests:'light'
+      //Тесто
+      dough:'light',
+      namePizza:'',
+
+      pizzaSize:'',
     }
   }
 }

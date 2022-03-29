@@ -3,8 +3,13 @@
 <template>
   <div class="type-of-pizza">
 
-
-    <input type="text" v-model.trim="namePizza" placeholder="Название вашей пиццы" class="type-of-pizza__name-pizza">
+<!--    v-model.trim="namePizza"-->
+    <input type="text"
+           placeholder="Название вашей пиццы"
+           class="type-of-pizza__name-pizza"
+           :value="namePizza"
+           @input="valueNamePizza"
+    >
 
 <div>
   <div class="type-of-pizza__wrapper-images">
@@ -99,9 +104,15 @@ export default {
   data(){
     return {
       namePizza:'',
-
     }
   },
+  methods:{
+    valueNamePizza(e) {
+      //передаю значение инпута в родитель (home)
+      const value = e.target.value;
+      this.$emit('childComponentTypeOfPizzaValueNamePizza',value)
+    }
+  }
 }
 </script>
 

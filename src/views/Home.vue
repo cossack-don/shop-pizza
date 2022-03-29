@@ -9,8 +9,9 @@
 
       <div class="wrapper-pick-dough__left">
         <PickDough @childComponentPickDoughValueRadioBtn='snarfHandlerPickDoughValueRadioBtn'/>
-        ПРИМЕР: {{dough}}
-        <ChooseIngredients/>
+        ПРИМЕР: {{dough}} - Соус: {{sauce}}
+        <ChooseIngredients @childComponentChooseIngredientsValueSauce="snarfHandlerChooseIngredientsValueSauce"/>
+
       </div>
 
       <div class="wrapper-pick-dough__right">
@@ -59,13 +60,23 @@ export default {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
       this.pizzaSize = dataValueRadioBtnSizePizza
     },
+    snarfHandlerChooseIngredientsValueSauce(dataValueRadioBtnSauce) {
+      this.sauce = dataValueRadioBtnSauce
+    }
+
   },
   data() {
     return {
       //Тесто
       dough:'light',
+      //название пиццы
       namePizza:'',
+      //размер пиццы
       pizzaSize:'23',
+      //соус пиццы
+      sauce:'Томатный',
+      // массив из всех ингредиентов, счетчик, id, image
+      arrayIngredients:[]
     }
   }
 }

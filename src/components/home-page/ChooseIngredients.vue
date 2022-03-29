@@ -13,13 +13,25 @@
 
         <div class="ingredients-sauce-radio-btn">
 <!--          name="radio"-->
-          <input type="radio" id="pickedSauceOne" value="Томатный" v-model="pickedSauce">
+          <input type="radio"
+                 id="pickedSauceOne"
+                 value="Томатный"
+                 v-model="pickedSauce"
+                 :value="pickedSauce"
+                 @input="valueRadioBtnSauce"
+          >
           <label class="ingredients-sauce-radio-btn__label" for="pickedSauceOne">Томатный</label>
         </div>
 
         <div class="ingredients-sauce-radio-btn">
 <!--          name="radio"-->
-          <input type="radio" id="pickedSauceTwo" value="Сливочный" v-model="pickedSauce">
+          <input type="radio"
+                 id="pickedSauceTwo"
+                 value="Сливочный"
+                 v-model="pickedSauce"
+                 :value="pickedSauce"
+                 @input="valueRadioBtnSauce"
+          >
           <label class="ingredients-sauce-radio-btn__label" for="pickedSauceTwo">Сливочный</label>
         </div>
 
@@ -87,7 +99,6 @@ export default {
           name:'Грибы',
           counter:0,
           urlImage:require('@/assets/ingredients/mushrooms.png'),
-          showImage:false
         },
         {
           id:2,
@@ -241,6 +252,11 @@ export default {
         item.counter = 0
 
       })
+    },
+
+    valueRadioBtnSauce(e) {
+      const value = e.target.value;
+      this.$emit('childComponentChooseIngredientsValueSauce',value)
     }
   },
 

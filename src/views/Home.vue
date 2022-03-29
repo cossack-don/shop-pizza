@@ -9,19 +9,26 @@
 
       <div class="wrapper-pick-dough__left">
         <PickDough @childComponentPickDoughValueRadioBtn='snarfHandlerPickDoughValueRadioBtn'/>
-        ПРИМЕР: {{dough}} - Соус: {{sauce}}
-        <ChooseIngredients @childComponentChooseIngredientsValueSauce="snarfHandlerChooseIngredientsValueSauce"/>
+        ПРИМЕР: {{allDataPageHome.dough}} - Соус: {{allDataPageHome.sauce}}
+        <ChooseIngredients
+            @childComponentChooseIngredientsValueSauce="snarfHandlerChooseIngredientsValueSauce"
+            @arrayWithAllIngredientsActual="snarfHandlerArrayWithAllIngredientsActual"
+            @childComponentChooseIngredientsResetArrayData="snarfHandlerChooseIngredientsResetArrayData"
+        />
+
 
       </div>
 
       <div class="wrapper-pick-dough__right">
         <ChooseSize @childComponentChooseSizeValueRadioBtnSizePizza="snarfHandlerChooseSizeValueRadioBtnSizePizza"/>
-        {{pizzaSize}}
+        {{allDataPageHome.pizzaSize}}
         <TypeOfPizza @childComponentTypeOfPizzaValueNamePizza='snarfHandlerTypeOfPizzaValueNamePizza' />
       </div>
-      пример: {{namePizza}}
+      пример: {{allDataPageHome.namePizza}}
     </section>
-
+{{allDataPageHome.arrayIngredients}}
+    <hr>
+    {{allDataPageHome}}
   </div>
 </template>
 
@@ -47,36 +54,46 @@ export default {
   methods:{
     snarfHandlerPickDoughValueRadioBtn(dataValueRadioBtn) {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
-      this.dough = dataValueRadioBtn
-      // console.log( this.dough )
+      this.allDataPageHome.dough = dataValueRadioBtn
+      // console.log( this.allDataPageHome.dough )
     },
 
     snarfHandlerTypeOfPizzaValueNamePizza(dataValueNamePizza) {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
-    this.namePizza = dataValueNamePizza
+    this.allDataPageHome.namePizza = dataValueNamePizza
     },
 
     snarfHandlerChooseSizeValueRadioBtnSizePizza(dataValueRadioBtnSizePizza) {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
-      this.pizzaSize = dataValueRadioBtnSizePizza
+      this.allDataPageHome.pizzaSize = dataValueRadioBtnSizePizza
     },
     snarfHandlerChooseIngredientsValueSauce(dataValueRadioBtnSauce) {
-      this.sauce = dataValueRadioBtnSauce
+      this.allDataPageHome.sauce = dataValueRadioBtnSauce
+    },
+    snarfHandlerArrayWithAllIngredientsActual(arrayWithAllIngredients) {
+      this.allDataPageHome.arrayIngredients = arrayWithAllIngredients
+      console.log(arrayWithAllIngredients)
+    },
+
+    snarfHandlerChooseIngredientsResetArrayData (dataArray) {
+      this.allDataPageHome.arrayIngredients = dataArray
     }
 
   },
   data() {
     return {
-      //Тесто
-      dough:'light',
-      //название пиццы
-      namePizza:'',
-      //размер пиццы
-      pizzaSize:'23',
-      //соус пиццы
-      sauce:'Томатный',
-      // массив из всех ингредиентов, счетчик, id, image
-      arrayIngredients:[]
+      allDataPageHome:{
+        //Тесто
+        dough:'light',
+        //название пиццы
+        namePizza:'',
+        //размер пиццы
+        pizzaSize:'23',
+        //соус пиццы
+        sauce:'Томатный',
+        // массив из всех ингредиентов, счетчик, id, image
+        arrayIngredients:[]
+      },
     }
   }
 }

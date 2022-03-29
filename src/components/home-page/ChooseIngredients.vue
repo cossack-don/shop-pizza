@@ -90,9 +90,7 @@ export default {
   },
   data() {
     return {
-      isActive:false,
       pickedSauce :'Томатный',
-
       arrayIngredientsForCounter:[
         {
           id:1,
@@ -198,7 +196,8 @@ export default {
 
       if(minNumberIngredient < counterMinus) {
         this.arrayIngredientsForCounter[index].counter--;
-
+        // передаем массив со всеми измененными счетчиками в родительский компонент home
+        this.$emit('arrayWithAllIngredientsActual',this.arrayIngredientsForCounter)
         //если счетчик ингредиента больше 1, делаем кнопку другого цвета
         if(this.arrayIngredientsForCounter[index].counter < 1) {
           this.$refs.counterColor[index].classList.remove("active-orange-btn-plus");
@@ -217,9 +216,10 @@ export default {
       const maxNumberIngredient = 3;
 
       if(maxNumberIngredient >counterPlus) {
-
+        //Увеличиваем счетчии на 1
         this.arrayIngredientsForCounter[index].counter++;
-
+        // передаем массив со всеми измененными счетчиками в родительский компонент home
+        this.$emit('arrayWithAllIngredientsActual',this.arrayIngredientsForCounter)
         //если счетчик ингредиента больше 1, делаем кнопку другого цвета .classList.add("show-ingredient-image");
         if(this.arrayIngredientsForCounter[index].counter >= 1) {
           this.$refs.counterColor[index].classList.add("active-orange-btn-plus");
@@ -252,6 +252,8 @@ export default {
         item.counter = 0
 
       })
+      // очищаем в родительском компоненте массив со всеми ингредиентами (компонент home-parent)
+      this.$emit('childComponentChooseIngredientsResetArrayData',[])
     },
 
     valueRadioBtnSauce(e) {

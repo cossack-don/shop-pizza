@@ -5,6 +5,8 @@ import basket from './basket';
 
 export default createStore({
   state: {
+      //массив с заказами
+      arrayWithOrder:[],
     // ingredients:
       // [
       //   {
@@ -105,8 +107,16 @@ export default createStore({
 
   },
   mutations: {
+      MUTATION_ADD_BASKET(state, order) {
+        state.arrayWithOrder.push(
+            order
+        )
+      },
   },
   actions: {
+      ACTION_ADD_BASKET({commit}) {
+          commit('MUTATION_ADD_BASKET')
+      }
   },
   modules: {
       // обращаться к стору-модулю

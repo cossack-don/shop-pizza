@@ -2,13 +2,19 @@
 
 <template>
   <div class="type-of-pizza">
-
+<!--    :value="namePizza"-->
+<!--    @input="valueNamePizza"-->
 <!--    v-model.trim="namePizza"-->
+<!--    valueNamePizza(e) {-->
+<!--    передаю значение инпута в родитель (home)-->
+<!--    const value = e.target.value;-->
+<!--    this.$emit('childComponentTypeOfPizzaValueNamePizza', this.namePizza)-->
+<!--     },-->
+
     <input type="text"
            placeholder="Название вашей пиццы"
            class="type-of-pizza__name-pizza"
-           :value="namePizza"
-           @input="valueNamePizza"
+           v-model.trim="namePizza"
     >
 
 <div>
@@ -85,19 +91,19 @@
 
     <div class="type-of-pizza__footer">
       <p class="type-of-pizza__price">Итого: 727 ₽</p>
-      <router-link class="type-of-pizza__btn" to="/basket">Готовьте!</router-link>
+      <router-link @click="addNewOrder" class="type-of-pizza__btn" to="/basket">Готовьте!</router-link>
     </div>
-
+<!--{{allDataPageHome}}-->
   </div>
 </template>
 
-
+$store.state.arrayWithOrder[0]
 
 <script>
-
-
+import { mapMutations } from 'vuex'
 
 export default {
+  props:['allDataPageHome'],
   components: {
 
   },
@@ -106,11 +112,17 @@ export default {
       namePizza:'',
     }
   },
+
   methods:{
-    valueNamePizza(e) {
-      //передаю значение инпута в родитель (home)
-      const value = e.target.value;
-      this.$emit('childComponentTypeOfPizzaValueNamePizza',value)
+    ...mapMutations(['MUTATION_ADD_BASKET',]),
+    addNewOrder() {
+      this.MUTATION_ADD_BASKET(this.allDataPageHome)
+    },
+  },
+
+  watch:{
+    namePizza:function(es) {
+      this.$emit('childComponentTypeOfPizzaValueNamePizza', es)
     }
   }
 }

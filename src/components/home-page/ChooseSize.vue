@@ -11,7 +11,14 @@
     <div class="wrapper-choose-size">
 <!--      23-->
       <div class="dough-radio-btn ">
-        <input id="sizePizza23" type="radio" name="radio" v-model="pickedSizePizza" value="23">
+        <input id="sizePizza23"
+               type="radio"
+               name="radio"
+               v-model="pickedSizePizza"
+               value="23"
+               :value="pickedSizePizza"
+               @input="valueRadioBtnSizePizza"
+        >
 
         <label for="sizePizza23">
           <img class="dough__image" :class="addClassPickSize23" src="@/assets/small-pizza-pick.jpg" alt="">
@@ -20,7 +27,14 @@
       </div>
 <!--     32 -->
       <div class="dough-radio-btn">
-        <input id="sizePizza32" type="radio" name="radio" v-model="pickedSizePizza" value="32">
+        <input id="sizePizza32"
+               type="radio"
+               name="radio"
+               v-model="pickedSizePizza"
+               value="32"
+               :value="pickedSizePizza"
+               @input="valueRadioBtnSizePizza"
+        >
 
         <label for="sizePizza32">
           <img class="dough__image" :class="addClassPickSize32" src="@/assets/medium-pizza-pick.jpg" alt="">
@@ -29,7 +43,14 @@
       </div>
 <!--   45   -->
       <div class="dough-radio-btn">
-        <input id="sizePizza45" type="radio" name="radio" v-model="pickedSizePizza" value="45">
+        <input id="sizePizza45"
+               type="radio"
+               name="radio"
+               v-model="pickedSizePizza"
+               value="45"
+               :value="pickedSizePizza"
+               @input="valueRadioBtnSizePizza"
+        >
 
         <label for="sizePizza45">
           <img class="dough__image" :class="addClassPickSize45"  src="@/assets/big-pizza-pick.jpg" alt="">
@@ -52,6 +73,12 @@ export default {
   data() {
     return {
       pickedSizePizza:'23'
+    }
+  },
+  methods:{
+    valueRadioBtnSizePizza(e) {
+      const value = e.target.value;
+      this.$emit('childComponentChooseSizeValueRadioBtnSizePizza',value)
     }
   },
   computed:{

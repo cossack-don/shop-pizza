@@ -14,7 +14,8 @@
       </div>
 
       <div class="wrapper-pick-dough__right">
-        <ChooseSize/>
+        <ChooseSize @childComponentChooseSizeValueRadioBtnSizePizza="snarfHandlerChooseSizeValueRadioBtnSizePizza"/>
+        {{pizzaSize}}
         <TypeOfPizza @childComponentTypeOfPizzaValueNamePizza='snarfHandlerTypeOfPizzaValueNamePizza' />
       </div>
       пример: {{namePizza}}
@@ -48,18 +49,23 @@ export default {
       this.dough = dataValueRadioBtn
       // console.log( this.dough )
     },
+
     snarfHandlerTypeOfPizzaValueNamePizza(dataValueNamePizza) {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
     this.namePizza = dataValueNamePizza
-    }
+    },
+
+    snarfHandlerChooseSizeValueRadioBtnSizePizza(dataValueRadioBtnSizePizza) {
+      //перехватываем событие из дочернего компонента и кладем в свою переменную
+      this.pizzaSize = dataValueRadioBtnSizePizza
+    },
   },
   data() {
     return {
       //Тесто
       dough:'light',
       namePizza:'',
-
-      pizzaSize:'',
+      pizzaSize:'23',
     }
   }
 }

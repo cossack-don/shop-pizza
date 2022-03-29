@@ -196,8 +196,18 @@ export default {
 
       if(minNumberIngredient < counterMinus) {
         this.arrayIngredientsForCounter[index].counter--;
+
+        //создаем новый массив, и закидываем туда данные без картинок
+        const arrayWithoutImages = [];
+        this.arrayIngredientsForCounter.forEach(item => {
+          arrayWithoutImages.push({
+            id:item.id,
+            name:item.name,
+            counter:item.counter
+          })
+        })
         // передаем массив со всеми измененными счетчиками в родительский компонент home
-        this.$emit('arrayWithAllIngredientsActual',this.arrayIngredientsForCounter)
+        this.$emit('arrayWithAllIngredientsActual',arrayWithoutImages)
         //если счетчик ингредиента больше 1, делаем кнопку другого цвета
         if(this.arrayIngredientsForCounter[index].counter < 1) {
           this.$refs.counterColor[index].classList.remove("active-orange-btn-plus");
@@ -218,8 +228,18 @@ export default {
       if(maxNumberIngredient >counterPlus) {
         //Увеличиваем счетчии на 1
         this.arrayIngredientsForCounter[index].counter++;
+
+        //создаем новый массив, и закидываем туда данные без картинок
+        const arrayWithoutImages = [];
+        this.arrayIngredientsForCounter.forEach(item => {
+          arrayWithoutImages.push({
+            id:item.id,
+            name:item.name,
+            counter:item.counter
+          })
+        })
         // передаем массив со всеми измененными счетчиками в родительский компонент home
-        this.$emit('arrayWithAllIngredientsActual',this.arrayIngredientsForCounter)
+        this.$emit('arrayWithAllIngredientsActual',arrayWithoutImages)
         //если счетчик ингредиента больше 1, делаем кнопку другого цвета .classList.add("show-ingredient-image");
         if(this.arrayIngredientsForCounter[index].counter >= 1) {
           this.$refs.counterColor[index].classList.add("active-orange-btn-plus");
@@ -252,6 +272,8 @@ export default {
         item.counter = 0
 
       })
+      // сброс к изначальным параметрам
+      this.pickedSauce = 'Томатный'
       // очищаем в родительском компоненте массив со всеми ингредиентами (компонент home-parent)
       this.$emit('childComponentChooseIngredientsResetArrayData',[])
     },

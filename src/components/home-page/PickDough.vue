@@ -9,7 +9,7 @@
     <div class="pick-dough__body dough">
 
       <div class="dough__thin dough-radio-btn">
-        <input id="radio-dough-one" type="radio" name="radio" value="light" v-model.trim="picked" :value="picked" @input="valueRadioBtn">
+        <input id="radio-dough-one" type="radio" name="radio" value="Тонкое" v-model.trim="picked" :value="picked" @input="valueRadioBtn">
 
         <label for="radio-dough-one" >
           <img class="dough__image" :class="addClassPickLightDough" src="@/assets/testo-light.png" alt="">
@@ -22,7 +22,7 @@
       </div>
 
       <div class="dough__bold dough-radio-btn">
-        <input id="radio-dough-two" type="radio" name="radio" value="bold" v-model.trim="picked" :value="picked" @input="valueRadioBtn">
+        <input id="radio-dough-two" type="radio" name="radio" value="Толстое" v-model.trim="picked" :value="picked" @input="valueRadioBtn">
 
         <label for="radio-dough-two" >
           <img class="dough__image" :class="addClassPickBoldDough" src="@/assets/testo-bold.png"  alt="">
@@ -58,7 +58,7 @@ export default {
     addClassPickLightDough() {
       let flag = null;
 
-      if(this.picked === 'light') {
+      if(this.picked === 'Тонкое') {
        return  {
          dough__image_active: flag = true
        }
@@ -68,7 +68,7 @@ export default {
     addClassPickBoldDough() {
       let flag = null;
 
-      if(this.picked === 'bold') {
+      if(this.picked === 'Толстое') {
         return  {
           dough__image_active: flag = true
         }
@@ -79,7 +79,7 @@ export default {
 
   data() {
     return {
-      picked:'light',
+      picked:'Тонкое',
     }
   },
 

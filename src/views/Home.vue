@@ -24,11 +24,27 @@
         {{allDataPageHome.pizzaSize}}
         <TypeOfPizza @childComponentTypeOfPizzaValueNamePizza='snarfHandlerTypeOfPizzaValueNamePizza' />
       </div>
-      пример: {{allDataPageHome.namePizza}}
+
     </section>
-{{allDataPageHome.arrayIngredients}}
+<!--{{allDataPageHome.arrayIngredients}}-->
     <hr>
-    {{allDataPageHome}}
+
+    <section>
+      <h4>Итого:</h4>
+
+      <div>
+        <p>Название: {{allDataPageHome.namePizza}}</p>
+        <p>Тесто: {{allDataPageHome.dough}}</p>
+        <p>Размер: {{allDataPageHome.pizzaSize}} см</p>
+        <p>Соус: {{allDataPageHome.sauce}}</p>
+        <p>Ингридиенты: </p>
+        <p v-if="filterAddIngredientsInArray.length === 0">Необходимо добавить ингредиенты!</p>
+        <div v-else v-for="item in filterAddIngredientsInArray" :key="item.id">
+          {{item.name}}
+          {{item.counter}}
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -49,7 +65,17 @@ export default {
     TypeOfPizza
   },
   computed:{
+  filterAddIngredientsInArray() {
+    return this.allDataPageHome.arrayIngredients.filter(item => {
+    //  фильтруем массив
+    //  возвращаем массив только с добавленными ингредиентами
+    const counter = 0;
 
+      if(item.counter > counter) {
+        return item
+      }
+    })
+  }
   },
   methods:{
     snarfHandlerPickDoughValueRadioBtn(dataValueRadioBtn) {
@@ -84,7 +110,7 @@ export default {
     return {
       allDataPageHome:{
         //Тесто
-        dough:'light',
+        dough:'Тонкое',
         //название пиццы
         namePizza:'',
         //размер пиццы

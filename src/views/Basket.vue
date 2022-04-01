@@ -8,14 +8,18 @@
     </div>
 
 
-    <div v-else class="main-style-for-block">
+    <div v-else class="main-style-for-block main-basket">
       {{$store.state.arrayWithOrder}}
 
-        <div  v-for="(item,index) in $store.state.arrayWithOrder" :key="index" >
-          <div style="width:40px;height: 40px; background: red"></div>
+        <div  v-for="(item,index) in $store.state.arrayWithOrder"
+              :key="index"
+              class="main-basket__wrapper"
+        >
+
+          <img src="@/assets/pizza-basket.png" alt="">
 
           <div>
-            <h4 class="main-style-title">{{item.namePizza}}_sss</h4>
+            <h4 class="main-style-title">__1{{item.namePizza}}1__</h4>
             <p>{{item.dough}} тесто, {{item.pizzaSize}} см</p>
             <p>{{item.sauce}} соус </p>
 
@@ -37,24 +41,26 @@
             762 руб
           </div>
 
-           <button>изменить заказ</button>
-          <hr>
+
+          <router-link to="/">Изменить</router-link>
+
+
         </div>
 
     </div >
-
+<AdditionalItem/>
   </div>
 </template>
 
 
 
 <script>
-
+import AdditionalItem from '@/components/basket-page/AdditionalItem.vue'
 
 export default {
   name: 'Home',
   components: {
-
+    AdditionalItem
   },
   methods:{
     // renderExtraIngredient(counter) {
@@ -66,6 +72,7 @@ export default {
 }
 </script>
 <style lang="scss">
+
 .basket-page {
   &__title-basket-null
   {
@@ -86,6 +93,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.main-basket {
+  &__wrapper {
+    display: flex;
   }
 }
 </style>

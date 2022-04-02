@@ -93,7 +93,7 @@
       <p class="type-of-pizza__price">Итого: 727 ₽</p>
       <router-link @click="addNewOrder" class="type-of-pizza__btn" to="/basket">Готовьте!</router-link>
     </div>
-<!--{{allDataPageHome}}-->
+{{allDataPageHome}}
   </div>
 </template>
 

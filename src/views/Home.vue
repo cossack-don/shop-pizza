@@ -22,6 +22,7 @@
 
         <TypeOfPizza @childComponentTypeOfPizzaValueNamePizza='snarfHandlerTypeOfPizzaValueNamePizza'
                      :allDataPageHome="allDataPageHome"
+
         />
       </div>
 
@@ -103,7 +104,10 @@ export default {
 
     snarfHandlerChooseSizeValueRadioBtnSizePizza (dataValueRadioBtnSizePizza) {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
-      this.allDataPageHome.pizzaSize = dataValueRadioBtnSizePizza
+      //передаем размер пиццы
+      this.allDataPageHome.pizzaSize = dataValueRadioBtnSizePizza.value
+      // передаем цену за размер пиццы
+      this.allDataPageHome.partsCostOnePizza.chooseSize = +dataValueRadioBtnSizePizza.price
     },
 
     snarfHandlerChooseIngredientsValueSauce (dataValueRadioBtnSauce) {
@@ -142,6 +146,12 @@ export default {
         arrayIngredients:[],
         //кол-во товара (одного) в корзине
         counterQuantityPizza:1,
+        //части общей суммы за пиццу
+        partsCostOnePizza:{
+          //размер пиццы стоит
+          chooseSize:300,
+
+        },
       //  стоимость одной пиццы
         costOnePizza:0
       },

@@ -58,6 +58,7 @@
         </label>
       </div>
     </div>
+
 <!--    {{pickedSizePizza}}-->
   </div>
 </template>
@@ -72,13 +73,50 @@ export default {
   },
   data() {
     return {
-      pickedSizePizza:'23'
+      pickedSizePizza:'23',
+      price:null
     }
   },
   methods:{
     valueRadioBtnSizePizza(e) {
+
       const value = e.target.value;
-      this.$emit('childComponentChooseSizeValueRadioBtnSizePizza',value)
+      //смотрим размер пиццы и возвращаем цену в родительский через this.price
+      this.returnCostChooseSize(value)
+
+      this.$emit('childComponentChooseSizeValueRadioBtnSizePizza', {
+        value:value,
+        price:this.price
+      })
+    },
+
+    returnCostChooseSize(sizePizza) {
+
+      const arrayPrice = [
+        {
+          '23': '300'
+        },
+
+        {
+          '32': '400'
+        },
+
+        {
+          '45': '500'
+        }
+      ]
+      //берем мини словарь и сравниваем размер пиццы
+      //через object.entries возвращаем ключ объекта словаря
+      //если ключ совпадает с размером пиццы, возвращаем цену за неё
+
+      for(let i = 0; i < arrayPrice.length; i++) {
+
+        if(sizePizza === Object.entries(arrayPrice[i])[0][0]) {
+          this.price = Object.entries(arrayPrice[i])[0][1]
+        }
+
+      }
+
     }
   },
   computed:{

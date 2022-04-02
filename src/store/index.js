@@ -7,6 +7,8 @@ export default createStore({
   state: {
       //массив с заказами
       arrayWithOrder:[],
+      //общая стоимость
+      totalCost:0
     // ingredients:
       // [
       //   {

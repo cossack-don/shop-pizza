@@ -19,14 +19,19 @@
           <img src="@/assets/pizza-basket.png" alt="" style="width: 97px; height: 97px">
 
           <div>
-            <h4 class="main-style-title">__1{{item.namePizza}}1__</h4>
+            <h4 class="main-style-title">{{item.namePizza}}</h4>
             <p>{{item.dough}} тесто, {{item.pizzaSize}} см</p>
             <p>{{item.sauce}} соус </p>
 
             <p>
               Начинка:
               <span v-for="(ingredients,index) in item.arrayIngredients"
-                    :key="index"> {{ingredients.name}},
+                    :key="index">
+
+                <span v-if="ingredients.counter >= 1">
+                {{ingredients.name}} - {{ingredients.counter}},
+                </span>
+
               </span>
 
             </p>
@@ -62,7 +67,14 @@
 
     </div >
 
-    <button @click="cleanBasket">Очистить корзину</button>
+    <button
+        v-if="$store.state.arrayWithOrder.length !==0"
+        @click="cleanBasket"
+        class="basket-page__btn-clean-basket"
+    >
+      Очистить корзину
+    </button>
+
 <AdditionalItem/>
   </div>
 </template>
@@ -128,6 +140,26 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__btn-clean-basket {
+    color: #ffffff;
+    background: #FF6B00FF;
+    font-weight: bold;
+    display: block;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+
+    text-align: center;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      transition: 0.5s;
+      background: #ff8f3e;
+    }
   }
 }
 

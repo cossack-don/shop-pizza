@@ -133,14 +133,17 @@ export default {
         //Тесто
         dough:'Тонкое',
         //название пиццы
-        namePizza:'',
+        namePizza:'test-name-pizza',
         //размер пиццы
         pizzaSize:'23',
         //соус пиццы
         sauce:'Томатный',
         // массив из всех ингредиентов, счетчик, id, image
         arrayIngredients:[],
-        counterQuantityPizza:1
+        //кол-во товара (одного) в корзине
+        counterQuantityPizza:1,
+      //  стоимость одной пиццы
+        costOnePizza:0
       },
     }
   }

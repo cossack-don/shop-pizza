@@ -158,7 +158,8 @@ export default {
 
   &__image {
     margin-right: 15px;
-    width: 50px;
+    //width: 50px;
+    width: auto;
     height: 50px;
   }
 

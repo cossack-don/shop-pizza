@@ -23,7 +23,7 @@
 
           <img src="@/assets/pizza-basket.png" alt="" style="width: 97px; height: 97px">
 
-          <div>
+          <div style="margin-left: 20px; width: 50%; margin-right: 50px;">
 
             <h4 class="main-style-title">{{item.namePizza}}</h4>
             <p>{{item.dough}} тесто, {{item.pizzaSize}} см</p>
@@ -45,9 +45,10 @@
           </div>
 
 
+        <div style="display: flex">
           <button
               class="main-basket__btn-quantity-minus"
-          @click="counterQuantityPizzaMinus(index)"
+              @click="counterQuantityPizzaMinus(index)"
           >
             -
           </button>
@@ -57,16 +58,20 @@
           <button
               class="main-basket__btn-quantity-plus"
               @click="counterQuantityPizzaPlus(index)"
-              >
+          >
             +
           </button>
+        </div>
 
-          <div>
-            {{$store.state.arrayWithOrder[index].costOnePizza}} sss
+          <div style="margin-right: auto; margin-left: auto; font-weight: bold;
+    font-size: 20px;
+
+    ">
+            {{$store.state.arrayWithOrder[index].costOnePizza}} ₽
           </div>
 
 
-          <router-link to="/">Изменить</router-link>
+          <router-link style="text-decoration: none" to="/">Изменить</router-link>
 
 
         </div>
@@ -168,9 +173,17 @@ export default {
 }
 
 .main-basket {
+  margin-bottom: 50px;
 
   &__wrapper {
     display: flex;
+    border-bottom: 1px solid rgba(34, 60, 80, 0.2);
+    margin-top: 20px;
+    padding-bottom: 20px;
+
+    &:last-child  {
+      border-bottom:none;
+    }
   }
 
   &__btn-quantity-plus {

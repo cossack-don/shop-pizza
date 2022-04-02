@@ -181,6 +181,7 @@ export default {
   }
   &__title {
     margin-top: 20px;
+    margin-bottom: 20px;
     font-weight: bold;
     font-size: 40px;
   }

@@ -12,7 +12,7 @@
         <p class="ingredients-sauce__title">Основной соус: </p>
 
         <div class="ingredients-sauce-radio-btn">
-<!--          name="radio"-->
+          <!--name="radio"-->
           <input type="radio"
                  id="pickedSauceOne"
                  value="Томатный"
@@ -24,7 +24,7 @@
         </div>
 
         <div class="ingredients-sauce-radio-btn">
-<!--          name="radio"-->
+          <!--name="radio"-->
           <input type="radio"
                  id="pickedSauceTwo"
                  value="Сливочный"
@@ -41,13 +41,12 @@
 
 <div class="ingredients-stuffing">
   <p class="ingredients-stuffing__title">Начинка:</p>
-
-
 </div>
 
 
 <!--      <img :src="`${item.url}`" alt="" v-for="(item,index) in items" :key="index">-->
 <div class="ingredients-stuffing-items">
+
   <div v-for="(item,index) in arrayIngredientsForCounter" :key="index" class="ingredients-stuffing-items__wrapper">
 
     <div class="ingredients-stuffing-item">
@@ -56,18 +55,24 @@
     </div>
 
     <div class="ingredients-stuffing-counters">
-      <button class="ingredients-counter-minus ingredients-counter"
 
-              @click="counterMinus(item.counter, index)">-</button>
+      <button class="ingredients-counter-minus ingredients-counter"
+              @click="counterMinus(item.counter, index)">
+        -
+      </button>
 
       <span class="ingredients-counter__text">{{item.counter}}</span>
 
       <button class="ingredients-counter-plus ingredients-counter"
               ref="counterColor"
-              @click="counterPlus(item.counter, index)">+</button>
+              @click="counterPlus(item.counter, index)">
+        +
+      </button>
+
     </div>
 
   </div>
+
 </div>
 
 <!--{{$store.state.ingredients}}-->
@@ -82,44 +87,46 @@
 
 <script>
 
-
-
 export default {
-  components: {
 
-  },
   data() {
     return {
       pickedSauce :'Томатный',
+
       arrayIngredientsForCounter:[
         {
           id:1,
           name:'Грибы',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/mushrooms.png'),
         },
         {
           id:2,
           name:'Чеддер',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/cheddar.png'),
         },
         {
           id:3,
           name:'Салями',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/salami.png'),
         },
         {
           id:4,
           name:'Ветчина',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/ham.png'),
         },
         {
           id:5,
           name:'Ананас',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/pineapple.png'),
 
         },
@@ -127,6 +134,7 @@ export default {
           id:6,
           name:'Бекон',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/bacon.png'),
 
         },
@@ -134,6 +142,7 @@ export default {
           id:7,
           name:'Лук',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/allium.png')
 
         },
@@ -141,6 +150,7 @@ export default {
           id:8,
           name:'Чили',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/chile.png')
 
         },
@@ -148,42 +158,49 @@ export default {
           id:9,
           name:'Халапеньо',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/jalapeno.png')
         },
         {
           id:10,
           name:'Маслины',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/olea.png')
         },
         {
           id:11,
           name:'Томаты',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/tomato.png')
         },
         {
           id:12,
           name:'Лосось',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/salmon.png')
         },
         {
           id:13,
           name:'Моцарелла',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/mozzarella.png')
         },
         {
           id:14,
           name:'Пармезан',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/parmesa.png')
         },
         {
           id:15,
           name:'Блю чиз',
           counter:0,
+          price:50,
           urlImage:require('@/assets/ingredients/blue-cheese.png')
         },
       ],
@@ -203,11 +220,14 @@ export default {
           arrayWithoutImages.push({
             id:item.id,
             name:item.name,
-            counter:item.counter
+            counter:item.counter,
+            price:item.price
           })
         })
+
         // передаем массив со всеми измененными счетчиками в родительский компонент home
         this.$emit('arrayWithAllIngredientsActual',arrayWithoutImages)
+
         //если счетчик ингредиента больше 1, делаем кнопку другого цвета
         if(this.arrayIngredientsForCounter[index].counter < 1) {
           this.$refs.counterColor[index].classList.remove("active-orange-btn-plus");
@@ -235,11 +255,14 @@ export default {
           arrayWithoutImages.push({
             id:item.id,
             name:item.name,
-            counter:item.counter
+            counter:item.counter,
+            price:item.price
           })
         })
+
         // передаем массив со всеми измененными счетчиками в родительский компонент home
         this.$emit('arrayWithAllIngredientsActual',arrayWithoutImages)
+
         //если счетчик ингредиента больше 1, делаем кнопку другого цвета .classList.add("show-ingredient-image");
         if(this.arrayIngredientsForCounter[index].counter >= 1) {
           this.$refs.counterColor[index].classList.add("active-orange-btn-plus");
@@ -250,8 +273,6 @@ export default {
           const arrayImagesForIngredients = document.querySelectorAll('.ingredient-image');
           arrayImagesForIngredients[index].classList.add("show-ingredient-image")
         }
-
-
 
       }
 
@@ -272,6 +293,7 @@ export default {
         item.counter = 0
 
       })
+
       // сброс к изначальным параметрам
       this.pickedSauce = 'Томатный'
       // очищаем в родительском компоненте массив со всеми ингредиентами (компонент home-parent)
@@ -313,13 +335,16 @@ export default {
       background: #ff8f3e;
     }
   }
+
   &__body {
     margin-top: 15px;
     margin-bottom: 15px;
   }
 
 }
+
 .ingredients-counter {
+
   &__text {
     font-weight: bold;
     font-size: 20px;
@@ -327,7 +352,8 @@ export default {
     margin-left: 10px;
   }
 }
-//color:#FF6B00FF;  orange
+
+
 .ingredients-counter-minus
 {
   background: #F2EEF5FF;
@@ -345,7 +371,9 @@ export default {
   &:hover {
     cursor: pointer;
   }
+
 }
+
 .ingredients-counter-plus {
   background:#41B619FF;
   border-radius: 50%;
@@ -363,6 +391,7 @@ export default {
     cursor: pointer;
   }
 }
+
 .ingredients-sauce {
   display: flex;
   align-items: center;
@@ -374,6 +403,7 @@ export default {
     margin-right: 15px;
   }
 }
+
 .ingredients-sauce-radio-btn {
   margin-right: 15px;
 
@@ -382,7 +412,9 @@ export default {
       cursor: pointer;
     }
   }
+
 }
+
 .ingredients-sauce-radio-btn {
 
   label {
@@ -394,6 +426,7 @@ export default {
     line-height: 18px;
     user-select: none;
   }
+
   label:before {
     content: "";
     display: inline-block;
@@ -405,6 +438,7 @@ export default {
     border: solid 2px #cac6cd;
     border-radius: 50%;
   }
+
   input[type=radio] {
     display: none;
   }
@@ -412,6 +446,7 @@ export default {
   input[type=radio]:checked + label:before {
     background: #41B619FF;
   }
+
 }
 
 .ingredients-stuffing{
@@ -421,34 +456,37 @@ export default {
     margin-bottom: 20px;
   }
 
-
 }
+
 .ingredients-stuffing-items {
   display: flex;
-  //justify-content: space-between;
   flex-wrap:wrap;
 
   &__wrapper {
     margin-bottom: 45px;
-    //margin-right: 48px;
     width: 25%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
 }
+
 .ingredients-stuffing-item {
   display: flex;
   align-items: center;
+
   &__image {
     margin-right: 15px;
     width: 35px;
     height: auto;
   }
+
   &__title {
     font-size: 18px;
   }
+
 }
+
 .ingredients-stuffing-counters {
   display: flex;
   justify-content: end;

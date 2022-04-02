@@ -8,7 +8,7 @@
         Coca Cola 0,5 л.
       </h3>
     </header>
-
+    <div class="global-gray-line"></div>
 
     <hr>
 

@@ -7,7 +7,7 @@
       </router-link>
 <!--Иконка корзина-->
       <router-link to="/basket" class="header__basket basket">
-        <div class="basket__counter">2</div>
+        <div class="basket__counter">{{$store.state.arrayWithOrder.length}}</div>
         <img class="basket__basket-icon" src="@/assets/basket-icon.svg" alt="">
       </router-link>
 <!--Общая стоимость товаров-->

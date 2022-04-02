@@ -59,7 +59,7 @@
       </div>
     </div>
 
-<!--    {{pickedSizePizza}}-->
+
   </div>
 </template>
 
@@ -68,15 +68,14 @@
 
 
 export default {
-  name: 'Home',
-  components: {
-  },
+
   data() {
     return {
       pickedSizePizza:'23',
       price:null
     }
   },
+
   methods:{
     valueRadioBtnSizePizza(e) {
 
@@ -119,6 +118,7 @@ export default {
 
     }
   },
+
   computed:{
     addClassPickSize23() {
       let flag = null;
@@ -130,6 +130,7 @@ export default {
       }
 
     },
+
     addClassPickSize32() {
       let flag = null;
 
@@ -140,6 +141,7 @@ export default {
       }
 
     },
+
     addClassPickSize45() {
       let flag = null;
 

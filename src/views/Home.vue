@@ -1,6 +1,7 @@
 <template>
   <div class="main-content-app home-page">
 Нужно потом понять, как в корзине сделать кнопку изменить пиццу и вернуться в конструктор с ее ХТС
+
     <h1 class="home-page__title">Конструктор пиццы</h1>
 
     <section class="wrapper-pick-dough">
@@ -44,9 +45,14 @@
 
          <div class="home-page-result__right">
            <p class="home-page-result__item">Ингридиенты: </p>
-           <p class="home-page-result__item home-page-result__item--null" v-if="filterAddIngredientsInArray.length === 0">Необходимо добавить ингредиенты!</p>
+           <p class="home-page-result__item home-page-result__item--null"
+              v-if="filterAddIngredientsInArray.length === 0">
+             Необходимо добавить ингредиенты!
+           </p>
 
-           <div v-else v-for="item in filterAddIngredientsInArray" :key="item.id">
+           <div v-else
+                v-for="item in filterAddIngredientsInArray"
+                :key="item.id">
              <p class="home-page-result__ingredient">{{item.name}} - <span>{{item.counter}}</span></p>
            </div>
 
@@ -89,13 +95,14 @@ export default {
       })
     },
   },
+
   methods:{
 
     snarfHandlerPickDoughValueRadioBtn (dataValueRadioBtn) {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
       this.allDataPageHome.dough = dataValueRadioBtn.value
-      //кладем цегу за вид теста
-      this.allDataPageHome.partsCostOnePizza.pickDough = dataValueRadioBtn.price
+      //кладем цегу за вид теста / приводим к числу
+      this.allDataPageHome.partsCostOnePizza.pickDough = +dataValueRadioBtn.price
     },
 
     snarfHandlerTypeOfPizzaValueNamePizza (dataValueNamePizza) {
@@ -107,7 +114,7 @@ export default {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
       //передаем размер пиццы
       this.allDataPageHome.pizzaSize = dataValueRadioBtnSizePizza.value
-      // передаем цену за размер пиццы
+      // передаем цену за размер пиццы / приводим к числу
       this.allDataPageHome.partsCostOnePizza.chooseSize = +dataValueRadioBtnSizePizza.price
     },
 
@@ -117,7 +124,6 @@ export default {
 
     snarfHandlerArrayWithAllIngredientsActual (arrayWithAllIngredients) {
       this.allDataPageHome.arrayIngredients = arrayWithAllIngredients
-      console.log(arrayWithAllIngredients)
     },
 
     snarfHandlerChooseIngredientsResetArrayData (dataArray) {
@@ -132,13 +138,14 @@ export default {
       return firstSingUpperCase + wordWithoutFirstSing
     }
   },
+
   data() {
     return {
       allDataPageHome:{
         //Тесто
         dough:'Тонкое',
         //название пиццы
-        namePizza:'test-name-pizza',
+        namePizza:'Имя Пиццы',
         //размер пиццы
         pizzaSize:'23',
         //соус пиццы
@@ -147,6 +154,7 @@ export default {
         arrayIngredients:[],
         //кол-во товара (одного) в корзине
         counterQuantityPizza:1,
+
         //части общей суммы за пиццу
         partsCostOnePizza:{
           //размер пиццы стоит
@@ -175,54 +183,57 @@ export default {
     margin-top: 20px;
     font-weight: bold;
     font-size: 40px;
-
   }
 }
 
 .wrapper-pick-dough {
-display: flex;
+  display: flex;
   justify-content: space-between;
 
   &__left {
-    //background:red;
+
     width: 60%;
   }
 
   &__right {
-    //background:yellow;
     width: 38%;
   }
 }
 
 .home-page-result {
+
   &__wrapper {
     display: flex;
     height: 100px;
   }
+
   &__right {
     width: 50%;
     display: flex;
     flex-direction: column;
     flex-wrap:wrap;
   }
+
   &__left {
     width: 50%;
   }
+
   &__item {
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 10px;
 
     span {
-      font-weight: normal;
       color: #FF6B00FF;
       font-weight: bold;
     }
+
   }
 
   &__item--null {
     color:#FF6B00FF;
   }
+
   &__ingredient {
 
     span {

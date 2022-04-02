@@ -1,13 +1,18 @@
 <template>
   <div class="basket-page main-content-app">
-    <h1 class="home-page__title">Корзина</h1>
 
+    <h1 class="home-page__title">Корзина</h1>
+<!--Если корзина пустая то мы выдаем сообщение и ссылку на конструктор-->
     <div v-if="$store.state.arrayWithOrder.length === 0">
       <h4  class="main-style-title basket-page__title-basket-null">Заказы отсутствуют!</h4>
-      <router-link class="basket-page__link-home-page" to="/">Перейти к конструктору пиццы!</router-link>
+
+      <router-link
+          class="basket-page__link-home-page"
+          to="/">Перейти к конструктору пиццы!
+      </router-link>
     </div>
 
-
+<!--если корзина не пустая, выдаем значения-->
     <div v-else class="main-style-for-block main-basket">
       {{$store.state.arrayWithOrder}}
 
@@ -19,6 +24,7 @@
           <img src="@/assets/pizza-basket.png" alt="" style="width: 97px; height: 97px">
 
           <div>
+
             <h4 class="main-style-title">{{item.namePizza}}</h4>
             <p>{{item.dough}} тесто, {{item.pizzaSize}} см</p>
             <p>{{item.sauce}} соус </p>
@@ -56,7 +62,7 @@
           </button>
 
           <div>
-            762 руб
+            {{$store.state.arrayWithOrder[index].costOnePizza}} sss
           </div>
 
 
@@ -86,10 +92,11 @@ import { mapMutations } from 'vuex'
 import AdditionalItem from '@/components/basket-page/AdditionalItem.vue'
 
 export default {
-  name: 'Home',
+  name: 'Basket',
   components: {
     AdditionalItem
   },
+
   methods:{
     ...mapMutations(
         [
@@ -110,23 +117,20 @@ export default {
     counterQuantityPizzaPlus(indexItem) {
       this.MUTATION_BOOST_QUANTITY_PIZZA_PLUS(indexItem)
     }
-    // renderExtraIngredient(counter) {
-    //   if(counter > 0) {
-    //     return true
-    //   }
-    // }
+
   }
 }
 </script>
 <style lang="scss">
 
 .basket-page {
-  &__title-basket-null
-  {
+
+  &__title-basket-null {
     text-align: center;
     margin-top: 20px;
     display: block;
   }
+
   &__link-home-page {
     color: #ffffff;
     background: #41B619FF;
@@ -151,7 +155,6 @@ export default {
     font-size: 20px;
     border-radius: 10px;
     text-decoration: none;
-
     text-align: center;
     border: none;
 
@@ -160,10 +163,12 @@ export default {
       transition: 0.5s;
       background: #ff8f3e;
     }
+
   }
 }
 
 .main-basket {
+
   &__wrapper {
     display: flex;
   }
@@ -184,6 +189,7 @@ export default {
     &:hover {
       cursor: pointer;
     }
+
   }
 
   &__btn-quantity-minus {
@@ -202,6 +208,7 @@ export default {
     &:hover {
       cursor: pointer;
     }
+
   }
 }
 

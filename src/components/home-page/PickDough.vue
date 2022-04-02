@@ -9,10 +9,19 @@
     <div class="pick-dough__body dough">
 
       <div class="dough__thin dough-radio-btn">
-        <input id="radio-dough-one" type="radio" name="radio" value="Тонкое" v-model.trim="picked" :value="picked" @input="valueRadioBtn">
+        <input id="radio-dough-one"
+               type="radio"
+               name="radio"
+               value="Тонкое"
+               v-model.trim="picked"
+               :value="picked"
+               @input="valueRadioBtn">
 
         <label for="radio-dough-one" >
-          <img class="dough__image" :class="addClassPickLightDough" src="@/assets/testo-light.png" alt="">
+          <img class="dough__image"
+               :class="addClassPickLightDough"
+               src="@/assets/testo-light.png"
+               alt="">
 
           <span class="wrapper-description-dough">
             <span class="wrapper-description-dough__title">Тонкое</span>
@@ -22,10 +31,19 @@
       </div>
 
       <div class="dough__bold dough-radio-btn">
-        <input id="radio-dough-two" type="radio" name="radio" value="Толстое" v-model.trim="picked" :value="picked" @input="valueRadioBtn">
+        <input id="radio-dough-two"
+               type="radio"
+               name="radio"
+               value="Толстое"
+               v-model.trim="picked"
+               :value="picked"
+               @input="valueRadioBtn">
 
         <label for="radio-dough-two" >
-          <img class="dough__image" :class="addClassPickBoldDough" src="@/assets/testo-bold.png"  alt="">
+          <img class="dough__image"
+               :class="addClassPickBoldDough"
+               src="@/assets/testo-bold.png"
+               alt="">
           <span class="wrapper-description-dough">
             <span class="wrapper-description-dough__title">Толстое</span>
              <span class="wrapper-description-dough__text">из твердых сортов пшеницы</span>
@@ -43,10 +61,6 @@
 <script>
 
 export default {
-  name: 'Home',
-  components: {
-
-  },
 
   methods:{
     valueRadioBtn(e) {
@@ -84,6 +98,7 @@ export default {
 
     }
   },
+
   computed:{
     addClassPickLightDough() {
       let flag = null;
@@ -95,6 +110,7 @@ export default {
       }
 
     },
+
     addClassPickBoldDough() {
       let flag = null;
 
@@ -120,7 +136,6 @@ export default {
 <style lang="scss">
 .pick-dough {
 
-
   &__header {
     font-size: 20px;
     margin-bottom: 10px;
@@ -140,16 +155,19 @@ export default {
   &__body {
     display: flex;
   }
+
   &__image {
     margin-right: 15px;
     width: 50px;
     height: 50px;
   }
+
   &__image_active {
       transition: 0.5s;
       border:solid 3px #41B619FF;
       border-radius: 50%;
   }
+
   &__thin {
     display: flex;
     align-items: center;
@@ -165,14 +183,13 @@ export default {
 .wrapper-description-dough {
   display: flex;
   flex-direction: column;
- justify-content: center;
+  justify-content: center;
 
   &__title{
     font-weight: 600;
     font-size: 20px;
   }
 }
-
 
 //Radio Btns
 .dough-radio-btn {

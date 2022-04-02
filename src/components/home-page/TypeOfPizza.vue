@@ -18,6 +18,7 @@
     >
 
 <div>
+<!--  МОЖНО ПОТОМ ОПТИМИЗИРОВАТЬ И СДЕЛАТЬ ЦИКЛОМ-->
   <div class="type-of-pizza__wrapper-images">
 
     <img  class="type-of-pizza__image-pizza main-style-image type-of-pizza__image-pizza--pizza-null" src="@/assets/image-pizza-null.png" alt="">
@@ -88,36 +89,69 @@
   </div>
 </div>
 
-
     <div class="type-of-pizza__footer">
-      <p class="type-of-pizza__price">Итого: 727 ₽</p>
+      <p class="type-of-pizza__price">Итого: {{ renderCostOnePizza }} ₽</p>
       <router-link @click="addNewOrder" class="type-of-pizza__btn" to="/basket">Готовьте!</router-link>
     </div>
-{{allDataPageHome}}
+<!--{{allDataPageHome}}-->
+
+
   </div>
 </template>
 
-$store.state.arrayWithOrder[0]
+
 
 <script>
 import { mapMutations } from 'vuex'
 
 export default {
   props:['allDataPageHome'],
-  components: {
 
-  },
   data(){
     return {
       namePizza:'',
     }
   },
 
+  computed:{
+    renderCostOnePizza() {
+      return this.controllerOperationPrice(
+          this.allDataPageHome.partsCostOnePizza.pickDough,
+          this.allDataPageHome.partsCostOnePizza.chooseSize,
+          this.allDataPageHome.arrayIngredients
+      )
+    }
+  },
+
   methods:{
-    ...mapMutations(['MUTATION_ADD_BASKET',]),
+
+    ...mapMutations(['MUTATION_ADD_BASKET']),
+
     addNewOrder() {
       this.MUTATION_ADD_BASKET(this.allDataPageHome)
     },
+
+    controllerOperationPrice(pricePickDough, priceSizePizza, priceIngredients = []) {
+
+     // проходимся по массиву с ингредиентами и при каждом событие фильтруем
+     // добавил пользователь что-то к пицце или нет
+     // если счетчик добавления больше 1 или = 1, то возвращаем массив с этими ингредиентами
+     const returnArrayValueWitchPlusBtn =  priceIngredients.filter(item => {
+       if( item.counter >= 1) {
+         return item.price
+       }
+      })
+
+      //счетчик цены ингредиентов
+      let countPrice = 0;
+      //суммируем общую стоимость ингредиентов которые добавили
+      for(let i = 0; i < returnArrayValueWitchPlusBtn.length; i++) {
+        countPrice+=returnArrayValueWitchPlusBtn[i].price
+      }
+
+    //Соеденяем всю значения в одном и возвращаем
+    return this.allDataPageHome.costOnePizza = pricePickDough + priceSizePizza + countPrice
+    }
   },
 
   watch:{
@@ -135,6 +169,7 @@ export default {
 .ingredient-image {
   display: none;
 }
+
 .show-ingredient-image {
   display:block;
 }
@@ -149,70 +184,88 @@ export default {
     display: flex;
     align-items: center;
   }
+
   &__image-pizza--pizza-null {
     position: absolute;
   }
+
   &__image-pizza--mushrooms {
     position: absolute;
     z-index: 1;
   }
+
   &__image-pizza--cheddar {
     position: absolute;
     z-index: 2;
   }
+
   &__image-pizza--salami {
     position: absolute;
     z-index: 3;
   }
+
   &__image-pizza--ham {
     position: absolute;
     z-index: 4;
   }
+
   &__image-pizza--pineapple {
     position: absolute;
     z-index: 5;
   }
+
   &__image-pizza--bacon {
     position: absolute;
     z-index: 6;
   }
+
   &__image-pizza--allium {
     position: absolute;
     z-index: 7;
   }
+
   &__image-pizza--chile {
     position: absolute;
     z-index: 8;
   }
+
   &__image-pizza--jalapeno {
     position: absolute;
     z-index: 9;
   }
+
   &__image-pizza--olea {
     position: absolute;
     z-index: 10;
   }
+
   &__image-pizza--tomato {
     position: absolute;
     z-index: 11;
   }
+
   &__image-pizza--salmon {
     position: absolute;
     z-index: 12;
   }
+
   &__image-pizza--morazzarella {
     position: absolute;
     z-index: 13;
   }
+
   &__image-pizza--parmesa {
     position: absolute;
     z-index: 14;
   }
+
   &__image-pizza--blue-cheese {
     position: absolute;
     z-index: 15;
   }
+
   //end картинки для наложения на пиццу
+
   &__name-pizza {
     width: 100%;
     padding: 10px 20px;
@@ -226,18 +279,18 @@ export default {
 
     }
   }
-  &__image-pizza {
 
-  }
   &__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   &__price {
   font-weight: bold;
     font-size: 28px;
   }
+
   &__btn {
     color: $core-color-white;
     background: $core-color-green;
@@ -255,6 +308,7 @@ export default {
       color:$core-color-yellow;
       background: #62d939;
     }
+
   }
 }
 

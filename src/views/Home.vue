@@ -93,8 +93,9 @@ export default {
 
     snarfHandlerPickDoughValueRadioBtn (dataValueRadioBtn) {
       //перехватываем событие из дочернего компонента и кладем в свою переменную
-      this.allDataPageHome.dough = dataValueRadioBtn
-      // console.log( this.allDataPageHome.dough )
+      this.allDataPageHome.dough = dataValueRadioBtn.value
+      //кладем цегу за вид теста
+      this.allDataPageHome.partsCostOnePizza.pickDough = dataValueRadioBtn.price
     },
 
     snarfHandlerTypeOfPizzaValueNamePizza (dataValueNamePizza) {
@@ -150,6 +151,8 @@ export default {
         partsCostOnePizza:{
           //размер пиццы стоит
           chooseSize:300,
+          //вид теста
+          pickDough:100,
 
         },
       //  стоимость одной пиццы

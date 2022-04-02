@@ -51,7 +51,37 @@ export default {
   methods:{
     valueRadioBtn(e) {
       const value = e.target.value;
-      this.$emit('childComponentPickDoughValueRadioBtn',value)
+      this.returnCostPickDough(value)
+
+      this.$emit('childComponentPickDoughValueRadioBtn',{
+        value:value,
+        price: this.price
+      })
+    },
+
+    returnCostPickDough(lookDough) {
+
+      const arrayPrice = [
+        {
+          'Тонкое': '100'
+        },
+
+        {
+          'Толстое': '150'
+        },
+      ]
+      //берем мини словарь и сравниваем размер пиццы
+      //через object.entries возвращаем ключ объекта словаря
+      //если ключ совпадает с размером пиццы, возвращаем цену за неё
+
+      for(let i = 0; i < arrayPrice.length; i++) {
+
+        if(lookDough === Object.entries(arrayPrice[i])[0][0]) {
+          this.price = Object.entries(arrayPrice[i])[0][1]
+        }
+
+      }
+
     }
   },
   computed:{
@@ -80,6 +110,7 @@ export default {
   data() {
     return {
       picked:'Тонкое',
+      price:'100'
     }
   },
 

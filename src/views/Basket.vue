@@ -35,7 +35,9 @@
 
 
           <button
-              class="main-basket__btn-quantity-minus">
+              class="main-basket__btn-quantity-minus"
+          @click="counterQuantityPizzaMinus(index)"
+          >
             -
           </button>
 
@@ -59,7 +61,7 @@
 
     </div >
 
-    <button @click="cleanBasket">чистить корзину</button>
+    <button @click="cleanBasket">Очистить корзину</button>
 <AdditionalItem/>
   </div>
 </template>
@@ -76,9 +78,14 @@ export default {
     AdditionalItem
   },
   methods:{
-    ...mapMutations(['MUTATION_CLEAN_BASKET',]),
+    ...mapMutations(['MUTATION_CLEAN_BASKET','MUTATION_BOOST_QUANTITY_PIZZA_MINUS']),
+
     cleanBasket() {
       this.MUTATION_CLEAN_BASKET()
+    },
+
+    counterQuantityPizzaMinus(indexItem) {
+      this.MUTATION_BOOST_QUANTITY_PIZZA_MINUS(indexItem)
     }
     // renderExtraIngredient(counter) {
     //   if(counter > 0) {

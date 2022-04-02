@@ -115,7 +115,17 @@ export default createStore({
 
       MUTATION_CLEAN_BASKET(state) {
         state.arrayWithOrder = []
-      }
+      },
+
+      MUTATION_BOOST_QUANTITY_PIZZA_PLUS(state) {
+
+      },
+
+      MUTATION_BOOST_QUANTITY_PIZZA_MINUS(state,indexItem) {
+          //удаляем элемент из массива по index - при клике
+          state.arrayWithOrder.splice(indexItem,1)
+      },
+
   },
   actions: {
       ACTION_ADD_BASKET({commit}) {
@@ -124,6 +134,14 @@ export default createStore({
 
       ACTION_CLEAN_BASKET({commit}) {
           commit('MUTATION_CLEAN_BASKET')
+      },
+
+      ACTION_BOOST_QUANTITY_PIZZA_PLUS({commit}) {
+          commit('MUTATION_CLEAN_BASKET')
+      },
+
+      ACTION_BOOST_QUANTITY_PIZZA_MINUS({commit}, indexItem) {
+          commit('MUTATION_CLEAN_BASKET', indexItem)
       }
   },
   modules: {

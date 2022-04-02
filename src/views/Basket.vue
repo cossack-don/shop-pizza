@@ -16,7 +16,7 @@
               class="main-basket__wrapper"
         >
 
-          <img src="@/assets/pizza-basket.png" alt="">
+          <img src="@/assets/pizza-basket.png" alt="" style="width: 97px; height: 97px">
 
           <div>
             <h4 class="main-style-title">__1{{item.namePizza}}1__</h4>
@@ -33,9 +33,19 @@
 
           </div>
 
-          <div>
-            - 1 +
-          </div>
+
+          <button
+              class="main-basket__btn-quantity-minus">
+            -
+          </button>
+
+          <span class="ingredients-counter__text">{{item.counterQuantityPizza}}</span>
+
+          <button
+              class="main-basket__btn-quantity-plus"
+              >
+            +
+          </button>
 
           <div>
             762 руб
@@ -48,6 +58,8 @@
         </div>
 
     </div >
+
+    <button @click="cleanBasket">чистить корзину</button>
 <AdditionalItem/>
   </div>
 </template>
@@ -55,6 +67,7 @@
 
 
 <script>
+import { mapMutations } from 'vuex'
 import AdditionalItem from '@/components/basket-page/AdditionalItem.vue'
 
 export default {
@@ -63,6 +76,10 @@ export default {
     AdditionalItem
   },
   methods:{
+    ...mapMutations(['MUTATION_CLEAN_BASKET',]),
+    cleanBasket() {
+      this.MUTATION_CLEAN_BASKET()
+    }
     // renderExtraIngredient(counter) {
     //   if(counter > 0) {
     //     return true
@@ -100,5 +117,42 @@ export default {
   &__wrapper {
     display: flex;
   }
+
+  &__btn-quantity-plus {
+    background:#FF6B00FF;
+    border-radius: 50%;
+    padding: 8px;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__btn-quantity-minus {
+    background: #F2EEF5FF;
+    border-radius: 50%;
+    padding: 8px;
+    border: none;
+    color: #000000;
+    font-size: 20px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
+
 </style>

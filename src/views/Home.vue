@@ -139,7 +139,8 @@ export default {
         //соус пиццы
         sauce:'Томатный',
         // массив из всех ингредиентов, счетчик, id, image
-        arrayIngredients:[]
+        arrayIngredients:[],
+        counterQuantityPizza:1
       },
     }
   }

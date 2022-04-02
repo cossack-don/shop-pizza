@@ -112,10 +112,18 @@ export default createStore({
             order
         )
       },
+
+      MUTATION_CLEAN_BASKET(state) {
+        state.arrayWithOrder = []
+      }
   },
   actions: {
       ACTION_ADD_BASKET({commit}) {
           commit('MUTATION_ADD_BASKET')
+      },
+
+      ACTION_CLEAN_BASKET({commit}) {
+          commit('MUTATION_CLEAN_BASKET')
       }
   },
   modules: {

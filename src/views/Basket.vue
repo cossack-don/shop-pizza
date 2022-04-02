@@ -45,6 +45,7 @@
 
           <button
               class="main-basket__btn-quantity-plus"
+              @click="counterQuantityPizzaPlus(index)"
               >
             +
           </button>
@@ -78,7 +79,13 @@ export default {
     AdditionalItem
   },
   methods:{
-    ...mapMutations(['MUTATION_CLEAN_BASKET','MUTATION_BOOST_QUANTITY_PIZZA_MINUS']),
+    ...mapMutations(
+        [
+            'MUTATION_CLEAN_BASKET',
+            'MUTATION_BOOST_QUANTITY_PIZZA_MINUS',
+            'MUTATION_BOOST_QUANTITY_PIZZA_PLUS'
+        ]
+    ),
 
     cleanBasket() {
       this.MUTATION_CLEAN_BASKET()
@@ -86,6 +93,10 @@ export default {
 
     counterQuantityPizzaMinus(indexItem) {
       this.MUTATION_BOOST_QUANTITY_PIZZA_MINUS(indexItem)
+    },
+
+    counterQuantityPizzaPlus(indexItem) {
+      this.MUTATION_BOOST_QUANTITY_PIZZA_PLUS(indexItem)
     }
     // renderExtraIngredient(counter) {
     //   if(counter > 0) {

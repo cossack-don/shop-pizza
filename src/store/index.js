@@ -117,13 +117,19 @@ export default createStore({
         state.arrayWithOrder = []
       },
 
-      MUTATION_BOOST_QUANTITY_PIZZA_PLUS(state) {
-
+      MUTATION_BOOST_QUANTITY_PIZZA_PLUS(state, indexItem) {
+          state.arrayWithOrder[indexItem].counterQuantityPizza++
       },
 
-      MUTATION_BOOST_QUANTITY_PIZZA_MINUS(state,indexItem) {
+      MUTATION_BOOST_QUANTITY_PIZZA_MINUS(state, indexItem) {
           //удаляем элемент из массива по index - при клике
-          state.arrayWithOrder.splice(indexItem,1)
+
+          state.arrayWithOrder[indexItem].counterQuantityPizza--
+
+            if(state.arrayWithOrder[indexItem].counterQuantityPizza < 1 ) {
+                state.arrayWithOrder.splice(indexItem,1)
+                return
+            }
       },
 
   },
@@ -136,12 +142,12 @@ export default createStore({
           commit('MUTATION_CLEAN_BASKET')
       },
 
-      ACTION_BOOST_QUANTITY_PIZZA_PLUS({commit}) {
-          commit('MUTATION_CLEAN_BASKET')
+      ACTION_BOOST_QUANTITY_PIZZA_PLUS({commit}, indexItem) {
+          commit('MUTATION_BOOST_QUANTITY_PIZZA_PLUS', indexItem)
       },
 
       ACTION_BOOST_QUANTITY_PIZZA_MINUS({commit}, indexItem) {
-          commit('MUTATION_CLEAN_BASKET', indexItem)
+          commit('MUTATION_BOOST_QUANTITY_PIZZA_MINUS', indexItem)
       }
   },
   modules: {
